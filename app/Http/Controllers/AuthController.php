@@ -38,6 +38,40 @@ class AuthController extends Controller
     }
 
     /**
+     * Procesar el registro
+     */
+    public function register(Request $request)
+    {
+        $request->validate([
+            'nombre' => 'required|string|max:100',
+            'email' => 'required|email|unique:Usuarios,email|max:150',
+            'password' => 'required|string|min:6|confirmed',
+        ], [
+            'nombre.required' => 'El nombre es obligatorio.',
+            'email.required' => 'El email es obligatorio.',
+            'email.email' => 'El email debe ser una dirección válida.',
+            'email.unique' => 'Este email ya está registrado.',
+            'password.required' => 'La contraseña es obligatoria.',
+            'password.min' => 'La contraseña debe tener al menos 6 caracteres.',
+            'password.confirmed' => 'Las contraseñas no coinciden.',
+        ]);
+
+        // Crear el nuevo usuario
+        $usuario = Usuario::create([
+            'nombre' => $request->nombre,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'rol' => 'estudiante',
+        ]);
+
+        // Iniciar sesión automáticamente
+        Auth::login($usuario);
+
+        // Redirigir a la página principal
+        return redirect()->route('home')->with('success', '¡Bienvenido ' . $usuario->nombre . '! Tu cuenta ha sido creada exitosamente.');
+    }
+
+    /**
      * Cerrar sesión
      */
     public function logout(Request $request)

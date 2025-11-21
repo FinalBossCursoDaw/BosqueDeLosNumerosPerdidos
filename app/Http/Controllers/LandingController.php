@@ -21,4 +21,12 @@ class LandingController extends Controller
     {
         return view('login');
     }
+
+    /**
+     * Mostrar la página de registro
+     */
+    public function register()
+    {
+        return view('register');
+    }
 }
