@@ -35,7 +35,7 @@
                 </li>
             </ul>
             <div class="animate-pulse-slow">
-                <a href="#" class="bg-[#4CAF50] hover:bg-[#45A049] hover:shadow-2xl hover:scale-105 text-[#FFFBE9] py-3 px-12 rounded-xl text-2xl transition-all duration-300 shadow-lg border-[6px] border-[#2E7D32] inline-block hover:-translate-y-1">
+                <a href="{{ route('login') }}" class="bg-[#4CAF50] hover:bg-[#45A049] hover:shadow-2xl hover:scale-105 text-[#FFFBE9] py-3 px-12 rounded-xl text-2xl transition-all duration-300 shadow-lg border-[6px] border-[#2E7D32] inline-block hover:-translate-y-1">
                     Comenzar
                 </a>
             </div>
