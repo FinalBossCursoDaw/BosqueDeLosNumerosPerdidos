@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
 </head>
 <body class="mt-16">
-    <header id="header" class="fixed top-0 left-0 right-0 h-32 bg-left bg-[#C27525] z-50 transition-transform duration-300" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: auto 100%; background-repeat: repeat-x;">
+    <header id="header" class="fixed top-0 left-0 right-0 h-32 bg-left bg-[#C27525] overflow-hidden z-50 transition-transform duration-300" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: auto 100%; background-repeat: repeat-x;">
         <nav class="flex items-center justify-between px-8 h-full relative z-10">
             <div class="flex items-center -my-4 animate-bounce-slow">
                 <img src="{{ asset('imagenes/logojuego.png') }}" alt="Sumina" class="h-32 w-32 hover:scale-110 transition-transform duration-300 cursor-pointer">
             </div>
             <ul class="flex gap-20 text-yellow-400 text-3xl">
                 <li class="transform hover:scale-110 transition-all duration-300">
-                    <a href="#" class="hover:text-[#FED32C] transition-all text-stroke relative group">
+                    <a href="{{ route('landing') }}" class="hover:text-[#FED32C] transition-all text-stroke relative group">
                         Inicio
                         <span class="absolute -bottom-2 left-0 w-0 h-1 bg-[#FED32C] group-hover:w-full transition-all duration-300"></span>
                     </a>

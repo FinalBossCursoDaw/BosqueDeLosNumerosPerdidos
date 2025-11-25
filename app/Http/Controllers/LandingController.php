@@ -35,4 +35,12 @@ class LandingController extends Controller
     {
         return view('register');
     }
+
+    /**
+     * Mostrar la página de historia
+     */
+    public function historia()
+    {
+        return view('historia');
+    }
 }
