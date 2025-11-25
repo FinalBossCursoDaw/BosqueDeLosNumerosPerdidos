@@ -1,4 +1,4 @@
-@extends('landing-header')
+@extends('landing-auth-header')
 
 @section('content')
     <div class="min-h-screen bg-cover bg-top bg-no-repeat" style="background-image: url('{{ asset('imagenes/fondolanding.png') }}');">
@@ -13,7 +13,7 @@
                 <img src="{{ asset('imagenes/abejasunima.png') }}" alt="Abeja Sumina" class="w-120 h-120 object-contain animate-bounce-slow">
             </div>
             <div class="flex justify-center mb-16">
-                <a href="{{ route('historia') }}" class="relative text-[#FFED9A] py-4 px-12 rounded-2xl text-3xl transition-all duration-300 shadow-2xl inline-flex items-center gap-3 hover:scale-105 overflow-hidden" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 8px #86622F; paint-order: stroke fill;">
+                <a href="#" class="relative text-[#FFED9A] py-4 px-12 rounded-2xl text-3xl transition-all duration-300 shadow-2xl inline-flex items-center gap-3 hover:scale-105 overflow-hidden" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 8px #86622F; paint-order: stroke fill;">
                     <svg class="w-16 h-16" fill="#FED32C" viewBox="0 0   20 20" stroke="#86622F" stroke-width="4">
                         <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
                     </svg>

@@ -11,6 +11,12 @@ class LandingController extends Controller
      */
     public function index()
     {
+        // Si el usuario está autenticado, mostrar la versión con header de usuario
+        if (auth()->check()) {
+            return view('landing-authenticated');
+        }
+        
+        // Si no está autenticado, mostrar el landing normal
         return view('landing');
     }
 
@@ -20,5 +26,21 @@ class LandingController extends Controller
     public function login()
     {
         return view('login');
+    }
+
+    /**
+     * Mostrar la página de registro
+     */
+    public function register()
+    {
+        return view('register');
+    }
+
+    /**
+     * Mostrar la página de historia
+     */
+    public function historia()
+    {
+        return view('historia');
     }
 }
