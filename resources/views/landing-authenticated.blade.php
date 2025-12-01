@@ -52,18 +52,25 @@
                 </div>
 
                 <!-- Categoría 3: Relacionar números con frutas -->
-                <div class="bg-gradient-to-b from-[#FFEAA7] to-[#F9D68A] rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 flex flex-col" style="border: 4px solid #D4A574;">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <img src="{{ asset('imagenes/ValleDeLasFrutas.png') }}" alt="Números y frutas" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
-                        <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Ayuda a Sumina a relacionar los números con la cantidad correcta de frutas mágicas.</p>
-                        <button class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 mt-auto" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
-                            <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
-                                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
-                            </svg>
-                            Jugar
-                        </button>
+                <div class="bg-gradient-to-b from-[#FFEAA7] to-[#F9D68A] rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 flex flex-col"
+                        style="border: 4px solid #D4A574;">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <img src="{{ asset('imagenes/ValleDeLasFrutas.png') }}" alt="Números y frutas"
+                                class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
+                            <p class="text-[#FED32C] text-lg mb-4 text-center"
+                                style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Ayuda a Sumina a
+                                relacionar los números con la cantidad correcta de frutas mágicas.</p>
+                            <button href="{{ route('juego3') }}"
+                                class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 mt-auto"
+                                style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
+                                <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
+                                    <path
+                                        d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                                </svg>
+                                Jugar
+                            </button>
+                        </div>
                     </div>
-                </div>
 
                 <!-- Categoría 4: Recoger manzanas -->
                 <div class="bg-gradient-to-b from-[#FFEAA7] to-[#F9D68A] rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 flex flex-col" style="border: 4px solid #D4A574;">
