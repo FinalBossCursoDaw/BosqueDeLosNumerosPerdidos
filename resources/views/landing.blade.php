@@ -1,4 +1,4 @@
-@extends('landing-header')
+@extends(Auth::check() ? 'landing-auth-header' : 'landing-header')
 
 @section('content')
     <div class="min-h-screen bg-cover bg-top bg-no-repeat" style="background-image: url('{{ asset('imagenes/fondolanding.png') }}');">
@@ -13,7 +13,7 @@
                 <img src="{{ asset('imagenes/abejasunima.png') }}" alt="Abeja Sumina" class="w-120 h-120 object-contain animate-bounce-slow">
             </div>
             <div class="flex justify-center mb-16">
-                <a href="#" class="relative text-[#FFED9A] py-4 px-12 rounded-2xl text-3xl transition-all duration-300 shadow-2xl inline-flex items-center gap-3 hover:scale-105 overflow-hidden" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 8px #86622F; paint-order: stroke fill;">
+                <a href="{{ route('historia') }}" class="relative text-[#FFED9A] py-4 px-12 rounded-2xl text-3xl transition-all duration-300 shadow-2xl inline-flex items-center gap-3 hover:scale-105 overflow-hidden" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 8px #86622F; paint-order: stroke fill;">
                     <svg class="w-16 h-16" fill="#FED32C" viewBox="0 0   20 20" stroke="#86622F" stroke-width="4">
                         <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
                     </svg>
@@ -28,12 +28,12 @@
                     <div class="p-6 flex flex-col flex-grow">
                         <img src="{{ asset('imagenes/BosqueDeLasSumas.png') }}" alt="El Bosque de las Sumas" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
                         <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Ayuda a Sumina a devolver la vida al bosque resolviendo divertidas sumas.</p>
-                        <button class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 mt-auto" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
+                        <a href="{{ route('juego-sumas') }}" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 mt-auto" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
                             <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
                                 <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
                             </svg>
                             Jugar
-                        </button>
+                        </a>
                     </div>
                 </div>
 
@@ -41,13 +41,16 @@
                 <div class="bg-gradient-to-b from-[#FFEAA7] to-[#F9D68A] rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 flex flex-col" style="border: 4px solid #D4A574;">
                     <div class="p-6 flex flex-col flex-grow">
                         <img src="{{ asset('imagenes/PuenteDeLaLogica.png') }}" alt="Cruza el río" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
-                        <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Ayuda a Sumina a cruzar el río ordenando los números en el orden correcto, seras capaz?</p>
-                        <button class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 mt-auto" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
-                            <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
-                                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
-                            </svg>
-                            Jugar
-                        </button>
+                        <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Ayuda a Sumina a cruzar el río ordenando los números en el orden correcto, serás capaz?</p>
+                        <div class="relative">
+                            <a id="puente-link" href="{{ route('puente-logica') }}" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed pointer-events-none" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
+                                <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
+                                    <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                                </svg>
+                                <span id="puente-link-text">Bloqueado</span>
+                            </a>
+                            <span id="puente-badge" class="absolute -top-3 -right-3 bg-[#E91E63] text-white text-xs font-black px-3 py-1 rounded-full shadow-lg">Termina las sumas</span>
+                        </div>
                     </div>
                 </div>
 
@@ -225,7 +228,26 @@
                         © 2025 El Bosque de los Números Perdidos
                     </p>
                 </div>
-            </div>
+        </div>
         </footer>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const puenteLink = document.getElementById('puente-link');
+            const puenteText = document.getElementById('puente-link-text');
+            const puenteBadge = document.getElementById('puente-badge');
+            let unlocked = false;
+            try {
+                unlocked = localStorage.getItem('sumasCompleted') === 'true';
+            } catch (e) {
+                unlocked = false;
+            }
+            if (unlocked && puenteLink) {
+                puenteLink.classList.remove('opacity-60', 'cursor-not-allowed', 'pointer-events-none');
+                puenteLink.classList.add('hover:scale-105');
+                if (puenteText) puenteText.textContent = 'Jugar';
+                if (puenteBadge) puenteBadge.classList.add('hidden');
+            }
+        });
+    </script>
 @endsection

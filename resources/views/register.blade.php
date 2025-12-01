@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar Sesión - El Bosque de los Números Perdidos</title>
+    <title>Registro - El Bosque de los Números Perdidos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @keyframes float {
@@ -63,22 +63,22 @@
     </div>
     
     <!-- Contenido principal -->
-    <div class="relative z-10 min-h-screen flex items-center justify-center p-8">
+    <div class="relative z-10 min-h-screen flex items-center justify-center p-8 py-20">
         <div class="w-full max-w-6xl flex flex-col md:flex-row items-center gap-12">
-            <!-- Formulario de login -->
+            <!-- Formulario de registro -->
             <div class="w-full md:w-3/5 bg-gradient-to-br from-[#FFEAA7]/30 via-[#F9D68A]/30 to-[#E8C574]/30 rounded-3xl p-3 shadow-2xl backdrop-blur-sm" style="border: 8px solid #4CAF50; box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(254, 211, 44, 0.3), 0 0 0 2px rgba(255, 234, 167, 0.5) inset;">
-                <div class="wood-texture rounded-2xl p-12 relative overflow-hidden" style="box-shadow: 0 10px 30px rgba(0,0,0,0.3) inset;">
+                <div class="wood-texture rounded-2xl p-8 relative overflow-hidden" style="box-shadow: 0 10px 30px rgba(0,0,0,0.3) inset;">
                   
                     
                     <!-- Efecto de brillo superior e inferior -->
                     <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-[#FED32C]/50 to-transparent animate-pulse"></div>
                     <div class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-[#FED32C]/50 to-transparent animate-pulse"></div>
                     
-                    <h1 class="text-[#FED32C] text-6xl font-black text-center mb-4 relative" style="-webkit-text-stroke: 3px #86622F; paint-order: stroke fill; text-shadow: 0 4px 8px rgba(0,0,0,0.5);">
-                        ¡Bienvenido!
+                    <h1 class="text-[#FED32C] text-5xl font-black text-center mb-3 relative" style="-webkit-text-stroke: 3px #86622F; paint-order: stroke fill; text-shadow: 0 4px 8px rgba(0,0,0,0.5);">
+                        ¡Únete!
                     </h1>
-                    <p class="text-[#FFEAA7] text-center mb-10 text-lg font-bold" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8), 0 0 20px rgba(255, 234, 167, 0.3);">
-                         Inicia sesión para continuar tu aventura 
+                    <p class="text-[#FFEAA7] text-center mb-6 text-base font-bold" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8), 0 0 20px rgba(255, 234, 167, 0.3);">
+                         Crea tu cuenta y comienza la aventura 
                     </p>
                     
                     @if ($errors->any())
@@ -97,20 +97,35 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('login.post') }}" method="POST" class="space-y-7">
+                    <form action="{{ route('register.post') }}" method="POST" class="space-y-4">
                         @csrf
                         
-                        <!-- Email o Usuario -->
+                        <!-- Nombre -->
                         <div>
-                            <label for="email" class="block text-[#FFEAA7] text-lg font-bold mb-3 flex items-center gap-2" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8);">
-                                <span class="text-[#FED32C] text-2xl"></span> Email
+                            <label for="nombre" class="block text-[#FFEAA7] text-base font-bold mb-2 flex items-center gap-2" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8);">
+                                <span class="text-[#FED32C] text-xl"></span> Nombre
+                            </label>
+                            <input 
+                                type="text" 
+                                id="nombre" 
+                                name="nombre" 
+                                value="{{ old('nombre') }}"
+                                class="w-full px-5 py-3 bg-gradient-to-r from-white/95 to-[#FFEAA7]/20 border-4 border-[#D4A574] rounded-2xl text-gray-800 font-semibold placeholder-gray-500 focus:outline-none focus:border-[#FED32C] focus:ring-4 focus:ring-[#FED32C]/50"
+                                style="box-shadow: 0 8px 20px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.5);"
+                                placeholder="Ingresa tu nombre"
+                                required
+                            >
+                        </div>
+    <div>
+                            <label for="email" class="block text-[#FFEAA7] text-base font-bold mb-2 flex items-center gap-2" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8);">
+                                <span class="text-[#FED32C] text-xl"></span> Email
                             </label>
                             <input 
                                 type="email" 
                                 id="email" 
                                 name="email" 
                                 value="{{ old('email') }}"
-                                class="w-full px-6 py-4 bg-gradient-to-r from-white/95 to-[#FFEAA7]/20 border-4 border-[#D4A574] rounded-2xl text-gray-800 font-semibold placeholder-gray-500 focus:outline-none focus:border-[#FED32C] focus:ring-4 focus:ring-[#FED32C]/50"
+                                class="w-full px-5 py-3 bg-gradient-to-r from-white/95 to-[#FFEAA7]/20 border-4 border-[#D4A574] rounded-2xl text-gray-800 font-semibold placeholder-gray-500 focus:outline-none focus:border-[#FED32C] focus:ring-4 focus:ring-[#FED32C]/50"
                                 style="box-shadow: 0 8px 20px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.5);"
                                 placeholder="Ingresa tu email"
                                 required
@@ -119,35 +134,49 @@
                         
                         <!-- Contraseña -->
                         <div>
-                            <label for="password" class="block text-[#FFEAA7] text-lg font-bold mb-3 flex items-center gap-2" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8);">
-                                <span class="text-[#FED32C] text-2xl"></span> Contraseña
+                            <label for="password" class="block text-[#FFEAA7] text-base font-bold mb-2 flex items-center gap-2" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8);">
+                                <span class="text-[#FED32C] text-xl"></span> Contraseña
                             </label>
                             <input 
                                 type="password" 
                                 id="password" 
                                 name="password" 
-                                class="w-full px-6 py-4 bg-gradient-to-r from-white/95 to-[#FFEAA7]/20 border-4 border-[#D4A574] rounded-2xl text-gray-800 font-semibold placeholder-gray-500 focus:outline-none focus:border-[#FED32C] focus:ring-4 focus:ring-[#FED32C]/50"
+                                class="w-full px-5 py-3 bg-gradient-to-r from-white/95 to-[#FFEAA7]/20 border-4 border-[#D4A574] rounded-2xl text-gray-800 font-semibold placeholder-gray-500 focus:outline-none focus:border-[#FED32C] focus:ring-4 focus:ring-[#FED32C]/50"
                                 style="box-shadow: 0 8px 20px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.5);"
-                                placeholder="Ingresa tu contraseña"
+                                placeholder="Crea una contraseña"
+                                required
+                            >
+                        </div>
+
+                        <!-- Confirmar Contraseña -->
+                        <div>
+                            <label for="password_confirmation" class="block text-[#FFEAA7] text-base font-bold mb-2 flex items-center gap-2" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8);">
+                                <span class="text-[#FED32C] text-xl"></span> Confirmar Contraseña
+                            </label>
+                            <input 
+                                type="password" 
+                                id="password_confirmation" 
+                                name="password_confirmation" 
+                                class="w-full px-5 py-3 bg-gradient-to-r from-white/95 to-[#FFEAA7]/20 border-4 border-[#D4A574] rounded-2xl text-gray-800 font-semibold placeholder-gray-500 focus:outline-none focus:border-[#FED32C] focus:ring-4 focus:ring-[#FED32C]/50"
+                                style="box-shadow: 0 8px 20px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.5);"
+                                placeholder="Confirma tu contraseña"
                                 required
                             >
                         </div>
                         
-                        
-                        
-                        <!-- Botón Iniciar Sesión -->
+                        <!-- Botón Registrarse -->
                         <button 
                             type="submit" 
-                            class="w-full bg-[#4CAF50] hover:bg-[#45A049] text-white font-black text-2xl py-6 rounded-2xl shadow-lg border-[6px] border-[#2E7D32]"
+                            class="w-full bg-[#4CAF50] hover:bg-[#45A049] text-white font-black text-xl py-4 rounded-2xl shadow-lg border-[6px] border-[#2E7D32] mt-2"
                         >
-                            Iniciar Sesión
+                            Registrarse
                         </button>
                         
-                        <!-- Registro -->
-                        <p class="text-[#FFEAA7] text-center text-lg mt-6 font-bold" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8);">
-                            ¿No tienes una cuenta? 
-                            <a href="{{ route('register') }}" class="text-[#FED32C] font-black hover:text-[#FFE566] transition-all hover:scale-110 inline-block transform" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8), 0 0 20px rgba(254, 211, 44, 0.5);">
-                                 Crea una aquí
+                        <!-- Login -->
+                        <p class="text-[#FFEAA7] text-center text-base mt-3 font-bold" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8);">
+                            ¿Ya tienes una cuenta? 
+                            <a href="{{ route('login') }}" class="text-[#FED32C] font-black hover:text-[#FFE566] transition-all hover:scale-110 inline-block transform" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8), 0 0 20px rgba(254, 211, 44, 0.5);">
+                                 Inicia sesión aquí
                             </a>
                         </p>
                     </form>

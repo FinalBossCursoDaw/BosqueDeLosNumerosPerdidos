@@ -38,6 +38,31 @@ class AuthController extends Controller
     }
 
     /**
+     * Procesar el registro de nuevo usuario
+     */
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:usuarios,email',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        // Crear el nuevo usuario
+        $usuario = Usuario::create([
+            'nombre' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        // Iniciar sesión automáticamente
+        Auth::login($usuario);
+        
+        // Redirigir a la página principal
+        return redirect()->route('home')->with('success', '¡Cuenta creada exitosamente! Bienvenido ' . $usuario->nombre . '!');
+    }
+
+    /**
      * Cerrar sesión
      */
     public function logout(Request $request)
