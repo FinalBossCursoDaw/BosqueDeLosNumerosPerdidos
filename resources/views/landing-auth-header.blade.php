@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -20,6 +21,26 @@
             <ul class="flex gap-20 text-yellow-400 text-3xl">
                 <li class="transform hover:scale-110 transition-all duration-300">
                     <a href="{{ route('home') }}" class="hover:text-[#FED32C] transition-all text-stroke relative group">
+=======
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bosque De Los Numeros Perdidos</title>
+    <link rel="icon" type="image/png" href="{{ asset('imagenes/logojuego.png') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ asset('css/header.css') }}">
+</head>
+<body class="mt-16">
+    <header id="header" class="fixed top-0 left-0 right-0 h-32 bg-left bg-[#C27525] overflow-hidden z-50 transition-transform duration-300" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: auto 100%; background-repeat: repeat-x;">
+        <nav class="flex items-center justify-between px-8 h-full relative z-10">
+            <div class="flex items-center -my-4 animate-bounce-slow">
+                <img src="{{ asset('imagenes/logojuego.png') }}" alt="Sumina" class="h-32 w-32 hover:scale-110 transition-transform duration-300 cursor-pointer">
+            </div>
+            <ul class="flex gap-20 text-yellow-400 text-3xl">
+                <li class="transform hover:scale-110 transition-all duration-300">
+                    <a href="{{ route('landing') }}" class="hover:text-[#FED32C] transition-all text-stroke relative group">
+>>>>>>> c0fca6e9cf0e4c7229343a668d7376887e219098
                         Inicio
                         <span class="absolute -bottom-2 left-0 w-0 h-1 bg-[#FED32C] group-hover:w-full transition-all duration-300"></span>
                     </a>
@@ -30,6 +51,7 @@
                         <span class="absolute -bottom-2 left-0 w-0 h-1 bg-[#FED32C] group-hover:w-full transition-all duration-300"></span>
                     </a>
                 </li>
+<<<<<<< HEAD
                 <li class="transform hover:scale-110 transition-all duration-300 relative group">
                     <button class="hover:text-[#FED32C] transition-all text-stroke relative flex items-center gap-2">
                         Idioma
@@ -59,6 +81,13 @@
                             </li>
                         </ul>
                     </div>
+=======
+                <li class="transform hover:scale-110 transition-all duration-300">
+                    <a href="#" class="hover:text-[#FED32C] transition-all text-stroke relative group">
+                        Idioma
+                        <span class="absolute -bottom-2 left-0 w-0 h-1 bg-[#FED32C] group-hover:w-full transition-all duration-300"></span>
+                    </a>
+>>>>>>> c0fca6e9cf0e4c7229343a668d7376887e219098
                 </li>
             </ul>
             <!-- Menú de usuario autenticado -->
@@ -67,14 +96,22 @@
                     <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
                     </svg>
+<<<<<<< HEAD
                     <span class="font-bold">{{ Auth::user()->nombre }}</span>
+=======
+                    <span class="">{{ Auth::user()->nombre }}</span>
+>>>>>>> c0fca6e9cf0e4c7229343a668d7376887e219098
                     <svg class="w-5 h-5 transition-transform group-hover:rotate-180 duration-300" fill="currentColor" viewBox="0 0 20 20">
                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
                     </svg>
                 </button>
                 
                 <!-- Dropdown menu -->
+<<<<<<< HEAD
                 <div class="absolute right-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 -translate-y-2 z-[110]">
+=======
+                <div class="absolute right-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 -translate-y-2 z-[60]">
+>>>>>>> c0fca6e9cf0e4c7229343a668d7376887e219098
                     <div class="bg-[#C27525] rounded-xl shadow-2xl border-4 border-[#8B5A2B] overflow-hidden" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover;">
                         <div class="py-2">
                             <a href="#" class="block px-6 py-3 text-[#FFFBE9] hover:bg-[#4CAF50]/30 transition-all duration-200 text-lg font-bold flex items-center gap-3">
@@ -108,8 +145,11 @@
 
     @yield('content')
 
+<<<<<<< HEAD
     @yield('scripts')
     
+=======
+>>>>>>> c0fca6e9cf0e4c7229343a668d7376887e219098
     <script>
         let lastScrollTop = 0;
         const header = document.getElementById('header');
@@ -127,11 +167,14 @@
             
             lastScrollTop = scrollTop;
         });
+<<<<<<< HEAD
 
         function changeLanguage(lang) {
             console.log('Cambiando idioma a: ' + lang);
             // Aquí puedes implementar la lógica de cambio de idioma
         }
+=======
+>>>>>>> c0fca6e9cf0e4c7229343a668d7376887e219098
     </script>
 </body>
 </html>

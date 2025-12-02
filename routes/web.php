@@ -6,10 +6,12 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CookieController;
 
 Route::get('/', [LandingController::class, 'index'])->name('home');
+Route::get('/historia', [LandingController::class, 'historia'])->name('historia');
 Route::get('/login', [LandingController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::get('/register', [LandingController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'register'])->name('register.post');
+<<<<<<< HEAD
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/historia', [LandingController::class, 'historia'])->name('historia');
 
@@ -32,3 +34,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/partida/save', [CookieController::class, 'savePartida'])->name('partida.save');
     Route::get('/partidas', [CookieController::class, 'getPartidas'])->name('partidas.get');
 });
+=======
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+>>>>>>> c0fca6e9cf0e4c7229343a668d7376887e219098
