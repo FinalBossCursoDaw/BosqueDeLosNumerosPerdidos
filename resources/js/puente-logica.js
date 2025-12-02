@@ -6,6 +6,7 @@ let stones = [];
 // Estado de color de cada piedra: 'normal', 'green', 'red'
 let stoneStates = [];
 let errorCount = 0; // Contador de errores
+let helpClicks = 0; // Contador de movimientos de rocas
 let timerInterval = null;
 let timeElapsed = 0;
 let gameActive = false;
@@ -49,6 +50,7 @@ async function saveToDatabase(completed) {
         puntuacion: puntuacion,
         tiempo_seg: timeElapsed,
         errores: errorCount || 0,
+        helps_clicks: helpClicks || 0,
         completado: completed
     };
     
@@ -149,6 +151,8 @@ function onDrop(e) {
         [stones[dragSrcIdx], stones[targetIdx]] = [stones[targetIdx], stones[dragSrcIdx]];
         // También intercambiar el estado de color de las piedras
         [stoneStates[dragSrcIdx], stoneStates[targetIdx]] = [stoneStates[targetIdx], stoneStates[dragSrcIdx]];
+        // Incrementar contador de movimientos
+        helpClicks++;
         renderStones();
     }
     dragSrcIdx = null;
@@ -320,6 +324,7 @@ function restartGame(resetStage = false, keepTimer = false) {
     if (resetStage) {
         stage = 1;
         errorCount = 0;
+        helpClicks = 0;
         timeElapsed = 0;
     }
     setStageConfig();
