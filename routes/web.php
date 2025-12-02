@@ -7,6 +7,7 @@ use App\Http\Controllers\CookieController;
 
 Route::get('/', [LandingController::class, 'index'])->name('home');
 Route::get('/historia', [LandingController::class, 'historia'])->name('historia');
+Route::get('/clasificacion', [LandingController::class, 'clasificacion'])->name('clasificacion');
 Route::get('/login', [LandingController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::get('/register', [LandingController::class, 'register'])->name('register');
