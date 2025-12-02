@@ -11,12 +11,6 @@ class LandingController extends Controller
      */
     public function index()
     {
-        // Si el usuario está autenticado, mostrar la versión con header de usuario
-        if (auth()->check()) {
-            return view('landing-authenticated');
-        }
-        
-        // Si no está autenticado, mostrar el landing normal
         return view('landing');
     }
 
@@ -42,5 +36,21 @@ class LandingController extends Controller
     public function historia()
     {
         return view('historia');
+    }
+
+    /**
+     * Mostrar el juego de sumas
+     */
+    public function juegoSumas()
+    {
+        return view('juego-sumas');
+    }
+
+    /**
+     * Mostrar el juego del puente lógico
+     */
+    public function juegosPuente()
+    {
+        return view('puente-logica');
     }
 }

@@ -108,14 +108,9 @@ return [
             'password' => env('DB_PASSWORD', ''),
             'charset' => env('DB_CHARSET', 'utf8'),
             'prefix' => '',
-            'prefix_indexes' => true
-<<<<<<< HEAD
+            'prefix_indexes' => true,
             'encrypt' => env('DB_ENCRYPT', 'no'),
             'trust_server_certificate' => env('DB_TRUST_SERVER_CERTIFICATE', true),
-=======
-            'encrypt' => 'no',
-            'trust_server_certificate' => true,
->>>>>>> c0fca6e9cf0e4c7229343a668d7376887e219098
         ],
 
     ],

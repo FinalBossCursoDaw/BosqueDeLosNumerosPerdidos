@@ -38,20 +38,11 @@ class AuthController extends Controller
     }
 
     /**
-<<<<<<< HEAD
      * Procesar el registro de nuevo usuario
-=======
-     * Procesar el registro
->>>>>>> c0fca6e9cf0e4c7229343a668d7376887e219098
      */
     public function register(Request $request)
     {
         $request->validate([
-<<<<<<< HEAD
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:usuarios,email',
-            'password' => 'required|string|min:6|confirmed',
-=======
             'nombre' => 'required|string|max:100',
             'email' => 'required|email|unique:Usuarios,email|max:150',
             'password' => 'required|string|min:6|confirmed',
@@ -63,34 +54,21 @@ class AuthController extends Controller
             'password.required' => 'La contraseña es obligatoria.',
             'password.min' => 'La contraseña debe tener al menos 6 caracteres.',
             'password.confirmed' => 'Las contraseñas no coinciden.',
->>>>>>> c0fca6e9cf0e4c7229343a668d7376887e219098
         ]);
 
         // Crear el nuevo usuario
         $usuario = Usuario::create([
-<<<<<<< HEAD
-            'nombre' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-=======
             'nombre' => $request->nombre,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'rol' => 'estudiante',
->>>>>>> c0fca6e9cf0e4c7229343a668d7376887e219098
         ]);
 
         // Iniciar sesión automáticamente
         Auth::login($usuario);
-<<<<<<< HEAD
-        
-        // Redirigir a la página principal
-        return redirect()->route('home')->with('success', '¡Cuenta creada exitosamente! Bienvenido ' . $usuario->nombre . '!');
-=======
 
         // Redirigir a la página principal
         return redirect()->route('home')->with('success', '¡Bienvenido ' . $usuario->nombre . '! Tu cuenta ha sido creada exitosamente.');
->>>>>>> c0fca6e9cf0e4c7229343a668d7376887e219098
     }
 
     /**

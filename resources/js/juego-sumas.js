@@ -18,6 +18,12 @@ const FLOWER_IMAGES = [
 let timerInterval = null;
 let timeElapsed = 0; // segundos transcurridos
 
+// Variables para guardar progreso
+let operationsResolved = 0; // Contador de operaciones resueltas
+let totalClicks = 0; // Contador de clicks totales durante el juego
+let autoSaveInterval = null; // Intervalo de guardado automático
+const AUTO_SAVE_SECONDS = 30; // Guardar cada 30 segundos
+
 // Funciones para leer cookies (escritas por Laravel)
 function getCookie(name) {
     const nameEQ = name + "=";
@@ -35,8 +41,15 @@ function saveGameData(completed) {
     saveToDatabase(completed);
 }
 
+// Guardar progreso automáticamente (sin marcar como completado)
+function autoSaveProgress() {
+    if (!gameActive) return;
+    console.log('💾 Auto-guardando progreso...');
+    saveToDatabase(false, true); // false = no completado, true = auto-save
+}
+
 // Guardar en base de datos (Laravel crea las cookies)
-async function saveToDatabase(completed) {
+async function saveToDatabase(completed, isAutoSave = false) {
     const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
     console.log('CSRF Token encontrado:', csrfToken ? 'Sí' : 'No');
     
@@ -51,7 +64,10 @@ async function saveToDatabase(completed) {
         tiempo_seg: timeElapsed,
         vidas: lives,
         racha: streak,
-        completado: completed
+        operaciones_resueltas: operationsResolved,
+        helps_clicks: totalClicks,
+        completado: completed,
+        auto_save: isAutoSave
     };
     
     console.log('Enviando datos:', dataToSend);
@@ -96,6 +112,8 @@ function initGame() {
     gameActive = true;
     flowersInGame = [];
     timeElapsed = 0; // reinicia el tiempo
+    operationsResolved = 0; // reinicia operaciones resueltas
+    totalClicks = 0; // reinicia contador de clicks
 
     // Limpiar área de juego
     document.getElementById('game-area').innerHTML = '';
@@ -105,6 +123,7 @@ function initGame() {
     generateOperation();
     startFlowerSpawn();
     startTimer();
+    startAutoSave(); // Iniciar guardado automático
 }
 
 // Actualizar UI del temporizador (ahora suma tiempo)
@@ -128,6 +147,14 @@ function startTimer() {
         timeElapsed++;
         updateTimerUI();
     }, 1000);
+}
+
+// Iniciar guardado automático
+function startAutoSave() {
+    if (autoSaveInterval) clearInterval(autoSaveInterval);
+    autoSaveInterval = setInterval(() => {
+        autoSaveProgress();
+    }, AUTO_SAVE_SECONDS * 1000);
 }
 
 // Actualizar UI
@@ -227,11 +254,13 @@ function generateWrongAnswer() {
 function handleFlowerClick(flower) {
     if (!gameActive) return;
     
+    totalClicks++; // Incrementar contador de clicks
     const number = parseInt(flower.dataset.number);
     if (number === currentAnswer) {
         // Respuesta correcta
         score += 10 + (streak * 2);
         streak++;
+        operationsResolved++; // Incrementar operaciones resueltas
         showFeedback('¡Genial!', '#4CAF50');
         removeFlower(flower);
 
@@ -340,6 +369,7 @@ function startFlowerSpawn() {
 function winGame() {
     gameActive = false;
     if (timerInterval) clearInterval(timerInterval);
+    if (autoSaveInterval) clearInterval(autoSaveInterval);
     saveGameData(true); // Guardar en cookies
     try {
         localStorage.setItem('sumasCompleted', 'true');
@@ -356,6 +386,7 @@ function winGame() {
 function gameOver() {
     gameActive = false;
     if (timerInterval) clearInterval(timerInterval);
+    if (autoSaveInterval) clearInterval(autoSaveInterval);
     saveGameData(false); // Guardar en cookies
     // Limpiar flores
     flowersInGame.forEach(flower => removeFlower(flower));
@@ -371,6 +402,7 @@ window.restartGame = function restartGame() {
     if (victoryModal) victoryModal.classList.add('hidden');
     flowersInGame.forEach(flower => removeFlower(flower));
     if (timerInterval) clearInterval(timerInterval);
+    if (autoSaveInterval) clearInterval(autoSaveInterval);
     initGame();
 }
 

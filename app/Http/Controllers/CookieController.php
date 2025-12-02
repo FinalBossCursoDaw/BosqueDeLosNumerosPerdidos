@@ -26,7 +26,10 @@ class CookieController extends Controller
             'vidas' => 'nullable|integer',
             'racha' => 'nullable|integer',
             'errores' => 'nullable|integer',
-            'completado' => 'nullable|boolean'
+            'operaciones_resueltas' => 'nullable|integer',
+            'helps_clicks' => 'nullable|integer',
+            'completado' => 'nullable|boolean',
+            'auto_save' => 'nullable|boolean'
         ]);
 
         try {
@@ -45,11 +48,13 @@ class CookieController extends Controller
             $fechaHoy = date('Y-m-d');
             Fecha::firstOrCreate(['fecha' => $fechaHoy]);
 
-            // Crear sesión
+            // Crear sesión con datos del juego
             $sesion = Sesion::create([
-                'id_usuario' => Auth::id(),
-                'date_time' => now(),
-                'hora' => date('H:i:s')
+                'level_reached' => 1,
+                'n_attemps' => 1,
+                'errors' => $validated['errores'] ?? 0,
+                'helps_clicks' => $validated['helps_clicks'] ?? 0,
+                'date_time' => now()
             ]);
 
             // Crear partida
@@ -75,32 +80,39 @@ class CookieController extends Controller
 
             // Guardar cookies según el tipo de juego
             if ($validated['juego'] === 'sumas') {
+                // Guardar datos actuales de la partida
                 $response->cookie('sumas_last_score', $validated['puntuacion'], 525600, '/', null, false, false); // 1 año
                 $response->cookie('sumas_last_time', $validated['tiempo_seg'], 525600, '/', null, false, false);
+                $response->cookie('sumas_last_lives', $validated['vidas'] ?? 0, 525600, '/', null, false, false);
+                $response->cookie('sumas_last_streak', $validated['racha'] ?? 0, 525600, '/', null, false, false);
+                $response->cookie('sumas_last_operations', $validated['operaciones_resueltas'] ?? 0, 525600, '/', null, false, false);
                 $response->cookie('sumas_last_completed', $validated['completado'] ?? false, 525600, '/', null, false, false);
                 
-                // Actualizar mejor puntuación si corresponde
+                // Actualizar mejor puntuación si corresponde (solo si está completado)
                 $bestScore = $request->cookie('sumas_best_score');
-                if (!$bestScore || $validated['puntuacion'] > $bestScore) {
+                if ($validated['completado'] && (!$bestScore || $validated['puntuacion'] > $bestScore)) {
                     $response->cookie('sumas_best_score', $validated['puntuacion'], 525600, '/', null, false, false);
                     $response->cookie('sumas_best_time', $validated['tiempo_seg'], 525600, '/', null, false, false);
                 }
                 
-                // Guardar historial
-                $history = $request->cookie('sumas_history');
-                $history = $history ? json_decode($history, true) : [];
-                array_unshift($history, [
-                    'score' => $validated['puntuacion'],
-                    'time' => $validated['tiempo_seg'],
-                    'lives' => $validated['vidas'] ?? 0,
-                    'streak' => $validated['racha'] ?? 0,
-                    'completed' => $validated['completado'] ?? false,
-                    'date' => now()->toISOString()
-                ]);
-                if (count($history) > 5) {
-                    $history = array_slice($history, 0, 5);
+                // Guardar historial (solo si no es auto-save o si está completado)
+                if (!($validated['auto_save'] ?? false) || ($validated['completado'] ?? false)) {
+                    $history = $request->cookie('sumas_history');
+                    $history = $history ? json_decode($history, true) : [];
+                    array_unshift($history, [
+                        'score' => $validated['puntuacion'],
+                        'time' => $validated['tiempo_seg'],
+                        'lives' => $validated['vidas'] ?? 0,
+                        'streak' => $validated['racha'] ?? 0,
+                        'operations' => $validated['operaciones_resueltas'] ?? 0,
+                        'completed' => $validated['completado'] ?? false,
+                        'date' => now()->toISOString()
+                    ]);
+                    if (count($history) > 5) {
+                        $history = array_slice($history, 0, 5);
+                    }
+                    $response->cookie('sumas_history', json_encode($history), 525600, '/', null, false, false);
                 }
-                $response->cookie('sumas_history', json_encode($history), 525600, '/', null, false, false);
                 
             } else {
                 // Puente de la lógica

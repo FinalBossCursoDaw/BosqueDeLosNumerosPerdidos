@@ -10,7 +10,13 @@ class Sesion extends Model
     protected $primaryKey = 'id_sesion';
     public $timestamps = false;
     
-    protected $fillable = ['id_usuario', 'date_time', 'hora'];
+    protected $fillable = [
+        'level_reached',
+        'n_attemps',
+        'errors',
+        'date_time',
+        'helps_clicks'
+    ];
 
     public function usuario()
     {

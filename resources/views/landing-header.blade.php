@@ -9,11 +9,7 @@
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     @yield('styles')
 </head>
-<<<<<<< HEAD
 <body class="@yield('body-class', 'mt-16')">
-=======
-<body class="mt-16">
->>>>>>> c0fca6e9cf0e4c7229343a668d7376887e219098
     <header id="header" class="fixed top-0 left-0 right-0 h-32 bg-left bg-[#C27525] z-[100] transition-transform duration-300" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: auto 100%; background-repeat: repeat-x;">
         <nav class="flex items-center justify-between px-8 h-full relative z-10">
             <div class="flex items-center -my-4 animate-bounce-slow">
@@ -41,10 +37,6 @@
                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
                         </svg>
                     </button>
-<<<<<<< HEAD
-=======
-                    <!-- Dropdown Menu -->
->>>>>>> c0fca6e9cf0e4c7229343a668d7376887e219098
                     <div class="absolute top-full mt-2 right-0 bg-[#C27525] rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 min-w-[200px] border-4 border-yellow-400 z-[110]" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: auto 100%; background-repeat: repeat-x;">
                         <ul class="py-2">
                             <li>

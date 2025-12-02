@@ -12,13 +12,14 @@
             <div class="flex justify-center mb-12">
                 <img src="{{ asset('imagenes/abejasunima.png') }}" alt="Abeja Sumina" class="w-120 h-120 object-contain animate-bounce-slow">
             </div>
-            <div class="flex justify-center mb-16">
+            <div class="flex justify-center gap-6 mb-16">
                 <a href="{{ route('historia') }}" class="relative text-[#FFED9A] py-4 px-12 rounded-2xl text-3xl transition-all duration-300 shadow-2xl inline-flex items-center gap-3 hover:scale-105 overflow-hidden" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 8px #86622F; paint-order: stroke fill;">
                     <svg class="w-16 h-16" fill="#FED32C" viewBox="0 0   20 20" stroke="#86622F" stroke-width="4">
                         <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
                     </svg>
                     Entra a la historia
                 </a>
+                
             </div>
 
             <!-- Sección de Categorías -->
@@ -236,17 +237,32 @@
             const puenteLink = document.getElementById('puente-link');
             const puenteText = document.getElementById('puente-link-text');
             const puenteBadge = document.getElementById('puente-badge');
+            
+            // Verificar si las sumas están completadas
             let unlocked = false;
             try {
                 unlocked = localStorage.getItem('sumasCompleted') === 'true';
             } catch (e) {
+                console.log('Error leyendo localStorage:', e);
                 unlocked = false;
             }
+            
+            console.log('Puente desbloqueado:', unlocked);
+            
+            // Si está desbloqueado, habilitar el enlace
             if (unlocked && puenteLink) {
                 puenteLink.classList.remove('opacity-60', 'cursor-not-allowed', 'pointer-events-none');
                 puenteLink.classList.add('hover:scale-105');
                 if (puenteText) puenteText.textContent = 'Jugar';
                 if (puenteBadge) puenteBadge.classList.add('hidden');
+            } else if (puenteLink) {
+                // Si está bloqueado, prevenir navegación y mostrar mensaje
+                puenteLink.addEventListener('click', function(e) {
+                    if (!unlocked) {
+                        e.preventDefault();
+                        alert('¡Completa primero el Bosque de las Sumas para desbloquear este nivel!');
+                    }
+                });
             }
         });
     </script>

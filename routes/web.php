@@ -11,20 +11,14 @@ Route::get('/login', [LandingController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::get('/register', [LandingController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'register'])->name('register.post');
-<<<<<<< HEAD
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/historia', [LandingController::class, 'historia'])->name('historia');
 
-// Juegos (requieren autenticación)
+// Juegos (accesibles sin autenticación)
+Route::get('/juegos/sumas', [LandingController::class, 'juegoSumas'])->name('juego-sumas');
+Route::get('/juegos/puente-logica', [LandingController::class, 'juegosPuente'])->name('puente-logica');
+
+// Rutas protegidas (requieren autenticación)
 Route::middleware('auth')->group(function () {
-    Route::get('/juegos/sumas', function() {
-        return view('juego-sumas');
-    })->name('juego-sumas');
-
-    Route::get('/juegos/puente-logica', function() {
-        return view('puente-logica');
-    })->name('puente-logica');
-
     // Rutas para leer cookies desde Laravel
     Route::get('/cookies/sumas', [CookieController::class, 'getSumasData'])->name('cookies.sumas');
     Route::get('/cookies/puente', [CookieController::class, 'getPuenteData'])->name('cookies.puente');
@@ -34,6 +28,3 @@ Route::middleware('auth')->group(function () {
     Route::post('/partida/save', [CookieController::class, 'savePartida'])->name('partida.save');
     Route::get('/partidas', [CookieController::class, 'getPartidas'])->name('partidas.get');
 });
-=======
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
->>>>>>> c0fca6e9cf0e4c7229343a668d7376887e219098
