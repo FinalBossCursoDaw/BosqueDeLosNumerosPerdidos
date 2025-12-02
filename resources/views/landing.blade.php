@@ -226,7 +226,7 @@
                                 <div class="p-8 flex flex-col items-center relative z-20">
                                     <div class="w-64 h-64 mb-6 rounded-full overflow-hidden relative transform group-hover:scale-110 transition-all duration-500"
                                         style="border: 5px solid #86622F; box-shadow: 0 8px 20px rgba(0,0,0,0.3);">
-                                        <img src="{{ asset('imagenes/RaulH.png') }}" alt="Miembro 3"
+                                        <img src="{{ asset('imagenes/RaulH.png') }}" alt="Raúl Hernández"
                                             class="w-full h-full object-cover">
                                         <!-- Animación de brillo al pasar por encima -->
                                         <div
@@ -235,7 +235,7 @@
                                     </div>
                                     <h3
                                         class="text-[#7A5526] text-3xl font-bold mb-3 text-center group-hover:text-[#5A3516] transition-colors duration-300 group-hover:scale-105 transform">
-                                        Nombre Apellido</h3>
+                                        Raúl Hernández</h3>
                                     <div class="relative mb-4 transform group-hover:scale-110 transition-all duration-300">
                                         <div class="relative px-8 py-3 rounded-2xl overflow-hidden"
                                             style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; border: 3px solid #86622F; box-shadow: 0 6px 15px rgba(0,0,0,0.3);">
