@@ -15,6 +15,14 @@ class LandingController extends Controller
     }
 
     /**
+     * Mostrar la página principal en catalán
+     */
+    public function indexCatalan()
+    {
+        return view('landing-ca');
+    }
+
+    /**
      * Mostrar la página de login
      */
     public function login()
@@ -36,6 +44,30 @@ class LandingController extends Controller
     public function historia()
     {
         return view('historia');
+    }
+
+    /**
+     * Mostrar la página de historia en catalán
+     */
+    public function historiaCatalan()
+    {
+        return view('historia-ca');
+    }
+
+    /**
+     * Mostrar la página principal en inglés
+     */
+    public function indexEnglish()
+    {
+        return view('landing-en');
+    }
+
+    /**
+     * Mostrar la página de historia en inglés
+     */
+    public function historiaEnglish()
+    {
+        return view('historia-en');
     }
 
     /**

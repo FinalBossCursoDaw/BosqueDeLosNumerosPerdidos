@@ -1,198 +1,190 @@
-@extends(Auth::check() ? 'landing-auth-header' : 'landing-header')
+@extends(Auth::check() ? 'landing-auth-header-en' : 'landing-header-en')
 
 @section('content')
     <div class="min-h-screen bg-cover bg-top bg-no-repeat" style="background-image: url('{{ asset('imagenes/fondolanding.png') }}');">
         <div class="container mx-auto p-8 pt-32">
            <div class="text-center">
             <h1 class="text-yellow-400 text-8xl font-bold transition-all relative group text-stroke-h1 mb-8">
-                EL BOSQUE DE LOS<br>
-                NÚMEROS PERDIDOS
+                THE FOREST OF<br>
+                LOST NUMBERS
             </h1>
-            <p class="text-4xl text-[#7A5526] font-bold mb-8" style="-webkit-text-stroke: 3px #FFFFFF; paint-order: stroke fill;">Resuelve retos y devuelve la vida al bosque</p>
+            <p class="text-4xl text-[#7A5526] font-bold mb-8" style="-webkit-text-stroke: 3px #FFFFFF; paint-order: stroke fill;">Solve challenges and bring life back to the forest</p>
             <div class="flex justify-center mb-12">
-                <img src="{{ asset('imagenes/abejasunima.png') }}" alt="Abeja Sumina" class="w-120 h-120 object-contain animate-bounce-slow">
+                <img src="{{ asset('imagenes/abejasunima.png') }}" alt="Bee Sumina" class="w-120 h-120 object-contain animate-bounce-slow">
             </div>
             <div class="flex justify-center gap-6 mb-16">
-                <a href="{{ route('historia') }}" class="relative text-[#FFED9A] py-4 px-12 rounded-2xl text-3xl transition-all duration-300 shadow-2xl inline-flex items-center gap-3 hover:scale-105 overflow-hidden" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 8px #86622F; paint-order: stroke fill;">
+                <a href="{{ route('historia.en') }}" class="relative text-[#FFED9A] py-4 px-12 rounded-2xl text-3xl transition-all duration-300 shadow-2xl inline-flex items-center gap-3 hover:scale-105 overflow-hidden" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 8px #86622F; paint-order: stroke fill;">
                     <svg class="w-16 h-16" fill="#FED32C" viewBox="0 0   20 20" stroke="#86622F" stroke-width="4">
                         <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
                     </svg>
-                    Entra a la historia
+                    Enter the Story
                 </a>
                 
             </div>
 
-            <!-- Sección de Categorías -->
+            <!-- Categories Section -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto px-4 pb-16">
-                <!-- Categoría 1: El Bosque de las Sumas -->
+                <!-- Category 1: Addition Forest -->
                 <div class="bg-gradient-to-b from-[#FFEAA7] to-[#F9D68A] rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 flex flex-col" style="border: 4px solid #D4A574;">
                     <div class="p-6 flex flex-col flex-grow">
-                        <img src="{{ asset('imagenes/BosqueDeLasSumas.png') }}" alt="El Bosque de las Sumas" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
-                        <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Ayuda a Sumina a devolver la vida al bosque resolviendo divertidas sumas.</p>
+                        <img src="{{ asset('imagenes/BosqueDeLasSumas.png') }}" alt="Addition Forest" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
+                        <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Help Sumina bring life back to the forest by solving fun additions.</p>
                         <a href="{{ route('juego-sumas') }}" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 mt-auto" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
                             <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
                                 <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
                             </svg>
-                            Jugar
+                            Play
                         </a>
                     </div>
                 </div>
 
-                <!-- Categoría 2: Ayuda a Sumina a cruzar el río -->
+                <!-- Category 2: Help Sumina cross the river -->
                 <div class="bg-gradient-to-b from-[#FFEAA7] to-[#F9D68A] rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 flex flex-col" style="border: 4px solid #D4A574;">
                     <div class="p-6 flex flex-col flex-grow">
-                        <img src="{{ asset('imagenes/PuenteDeLaLogica.png') }}" alt="Cruza el río" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
-                        <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Ayuda a Sumina a cruzar el río ordenando los números en el orden correcto, serás capaz?</p>
+                        <img src="{{ asset('imagenes/PuenteDeLaLogica.png') }}" alt="Cross the river" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
+                        <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Help Sumina cross the river by ordering the numbers correctly. Can you do it?</p>
                         <div class="relative">
                             <a id="puente-link" href="{{ route('puente-logica') }}" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed pointer-events-none" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
                                 <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
                                     <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
                                 </svg>
-                                <span id="puente-link-text">Bloqueado</span>
+                                <span id="puente-link-text">Locked</span>
                             </a>
-                            <span id="puente-badge" class="absolute -top-3 -right-3 bg-[#E91E63] text-white text-xs font-black px-3 py-1 rounded-full shadow-lg">Termina las sumas</span>
+                            <span id="puente-badge" class="absolute -top-3 -right-3 bg-[#E91E63] text-white text-xs font-black px-3 py-1 rounded-full shadow-lg">Finish additions</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Categoría 3: Relacionar números con frutas -->
+                <!-- Category 3: Match numbers with fruits -->
                 <div class="bg-gradient-to-b from-[#FFEAA7] to-[#F9D68A] rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 flex flex-col" style="border: 4px solid #D4A574;">
                     <div class="p-6 flex flex-col flex-grow">
-                        <img src="{{ asset('imagenes/ValleDeLasFrutas.png') }}" alt="Números y frutas" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
-                        <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Ayuda a Sumina a relacionar los números con la cantidad correcta de frutas mágicas.</p>
+                        <img src="{{ asset('imagenes/ValleDeLasFrutas.png') }}" alt="Numbers and fruits" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
+                        <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Help Sumina match numbers with the correct quantity of magical fruits.</p>
                         <button class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 mt-auto" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
                             <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
                                 <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
                             </svg>
-                            Jugar
+                            Play
                         </button>
                     </div>
                 </div>
 
-                <!-- Categoría 4: Recoger manzanas -->
+                <!-- Category 4: Pick apples -->
                 <div class="bg-gradient-to-b from-[#FFEAA7] to-[#F9D68A] rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 transition-all duration-300 flex flex-col" style="border: 4px solid #D4A574;">
                     <div class="p-6 flex flex-col flex-grow">
-                        <img src="{{ asset('imagenes/JardinDeLasRestas.png') }}" alt="Recoger manzanas" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
-                        <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Ayuda a Sumina a recoger las manzanas correctas resolviendo restas mágicas.</p>
+                        <img src="{{ asset('imagenes/JardinDeLasRestas.png') }}" alt="Pick apples" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
+                        <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Help Sumina pick the correct apples by solving magical subtractions.</p>
                         <button class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 mt-auto" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
                             <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
                                 <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
                             </svg>
-                            Jugar
+                            Play
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- Sección Conócenos -->
+            <!-- About Us Section -->
             <div id="conocenos" class="mt-32 mb-16 pt-20" style="scroll-margin-top: 20px;">
                 <div class="max-w-6xl mx-auto px-4">
                     <h2 class="text-yellow-400 text-6xl font-bold text-center mb-8 text-stroke-h1">
-                        CONÓCENOS
+                        ABOUT US
                     </h2>
                     
-                    <!-- Texto introductorio -->
+                    <!-- Introductory text -->
                     <div class="bg-gradient-to-b from-[#FFEAA7] to-[#F9D68A] rounded-3xl shadow-2xl p-8 mb-12" style="border: 6px solid #D4A574;">
                         <p class="text-[#7A5526] text-2xl text-center leading-relaxed" style="-webkit-text-stroke: 3px #FFFFFF; paint-order: stroke fill;">
-                            Somos un equipo de estudiantes apasionados por la tecnología y la educación. Este proyecto nació con el objetivo de hacer que el aprendizaje de las matemáticas sea divertido y accesible para todos los niños. 
-                            <span class="font-bold">¡Conoce al equipo detrás de El Bosque de los Números Perdidos!</span>
+                            We are a team of students passionate about technology and education. This project was born with the goal of making math learning fun and accessible for all children.
+                            <span class="font-bold">Meet the team behind The Forest of Lost Numbers!</span>
                         </p>
                     </div>
 
-                    <!-- Grid de miembros del equipo -->
+                    <!-- Team members grid -->
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                        <!-- Miembro 1 -->
+                        <!-- Member 1 -->
                         <div class="group bg-gradient-to-b from-[#FFEAA7] to-[#F9D68A] rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 hover:shadow-2xl transition-all duration-500 hover:-rotate-2 cursor-pointer relative" style="border: 4px solid #D4A574;">
-                            <!-- Overlay amarillo al hacer hover -->
                             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#FFD700]/20 to-[#FFA500]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
                             
                             <div class="p-8 flex flex-col items-center relative z-20">
                                 <div class="w-64 h-64 mb-6 rounded-full overflow-hidden relative transform group-hover:scale-110 transition-all duration-500" style="border: 5px solid #86622F; box-shadow: 0 8px 20px rgba(0,0,0,0.3);">
                                     <img src="{{ asset('imagenes/AdriG.png') }}" alt="Adrià Gómez" class="w-full h-full object-cover">
-                                    <!-- Animación de brillo al pasar por encima -->
                                     <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                                 </div>
                                 <h3 class="text-[#7A5526] text-3xl font-bold mb-3 text-center group-hover:text-[#5A3516] transition-colors duration-300 group-hover:scale-105 transform">Adrià Gómez</h3>
                                 <div class="relative mb-4 transform group-hover:scale-110 transition-all duration-300">
                                     <div class="relative px-8 py-3 rounded-2xl overflow-hidden" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; border: 3px solid #86622F; box-shadow: 0 6px 15px rgba(0,0,0,0.3);">
                                         <div class="absolute inset-0 bg-gradient-to-r from-[#FFD700]/30 via-transparent to-[#FFD700]/30 group-hover:animate-pulse"></div>
-                                        <p class="relative text-[#FFED9A] text-lg font-black tracking-wide" style="-webkit-text-stroke: 2px #86622F; paint-order: stroke fill; text-shadow: 0 4px 8px rgba(0,0,0,0.3);">CREADOR JUEGO 1</p>
+                                        <p class="relative text-[#FFED9A] text-lg font-black tracking-wide" style="-webkit-text-stroke: 2px #86622F; paint-order: stroke fill; text-shadow: 0 4px 8px rgba(0,0,0,0.3);">GAME 1 CREATOR</p>
                                     </div>
                                 </div>
                                 <p class="text-[#7A5526] text-lg text-center leading-relaxed font-medium group-hover:text-[#5A3516] transition-colors duration-300">
-                                    Responsable del diseño y desarrollo de El Bosque de las Sumas.
+                                    Responsible for the design and development of The Addition Forest.
                                 </p>
                             </div>
                         </div>
 
-                        <!-- Miembro 2 -->
+                        <!-- Member 2 -->
                         <div class="group bg-gradient-to-b from-[#FFEAA7] to-[#F9D68A] rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 hover:shadow-2xl transition-all duration-500 hover:rotate-2 cursor-pointer relative" style="border: 4px solid #D4A574;">
-                            <!-- Overlay amarillo al hacer hover -->
                             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#FFD700]/20 to-[#FFA500]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
                             
                             <div class="p-8 flex flex-col items-center relative z-20">
                                 <div class="w-64 h-64 mb-6 rounded-full overflow-hidden relative transform group-hover:scale-110 transition-all duration-500" style="border: 5px solid #86622F; box-shadow: 0 8px 20px rgba(0,0,0,0.3);">
                                     <img src="{{ asset('imagenes/VictorC.png') }}" alt="Victor Calvo" class="w-full h-full object-cover">
-                                    <!-- Animación de brillo al pasar por encima -->
                                     <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                                 </div>
                                 <h3 class="text-[#7A5526] text-3xl font-bold mb-3 text-center group-hover:text-[#5A3516] transition-colors duration-300 group-hover:scale-105 transform">Victor<br> Calvo</h3>
                                 <div class="relative mb-4 transform group-hover:scale-110 transition-all duration-300">
                                     <div class="relative px-8 py-3 rounded-2xl overflow-hidden" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; border: 3px solid #86622F; box-shadow: 0 6px 15px rgba(0,0,0,0.3);">
                                         <div class="absolute inset-0 bg-gradient-to-r from-[#FFD700]/30 via-transparent to-[#FFD700]/30 group-hover:animate-pulse"></div>
-                                        <p class="relative text-[#FFED9A] text-lg font-black tracking-wide" style="-webkit-text-stroke: 2px #86622F; paint-order: stroke fill; text-shadow: 0 4px 8px rgba(0,0,0,0.3);">CREADOR JUEGO 2</p>
+                                        <p class="relative text-[#FFED9A] text-lg font-black tracking-wide" style="-webkit-text-stroke: 2px #86622F; paint-order: stroke fill; text-shadow: 0 4px 8px rgba(0,0,0,0.3);">GAME 2 CREATOR</p>
                                     </div>
                                 </div>
                                 <p class="text-[#7A5526] text-lg text-center leading-relaxed font-medium group-hover:text-[#5A3516] transition-colors duration-300">
-                                    Creador del Puente de la Lógica y sus desafíos numéricos.
+                                    Creator of The Logic Bridge and its number challenges.
                                 </p>
                             </div>
                         </div>
 
-                        <!-- Miembro 3 -->
+                        <!-- Member 3 -->
                         <div class="group bg-gradient-to-b from-[#FFEAA7] to-[#F9D68A] rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 hover:shadow-2xl transition-all duration-500 hover:-rotate-2 cursor-pointer relative" style="border: 4px solid #D4A574;">
-                            <!-- Overlay amarillo al hacer hover -->
                             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#FFD700]/20 to-[#FFA500]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
                             
                             <div class="p-8 flex flex-col items-center relative z-20">
                                 <div class="w-64 h-64 mb-6 rounded-full overflow-hidden relative transform group-hover:scale-110 transition-all duration-500" style="border: 5px solid #86622F; box-shadow: 0 8px 20px rgba(0,0,0,0.3);">
-                                    <img src="{{ asset('imagenes/miembro3.jpg') }}" alt="Miembro 3" class="w-full h-full object-cover">
-                                    <!-- Animación de brillo al pasar por encima -->
+                                    <img src="{{ asset('imagenes/miembro3.jpg') }}" alt="Member 3" class="w-full h-full object-cover">
                                     <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                                 </div>
-                                <h3 class="text-[#7A5526] text-3xl font-bold mb-3 text-center group-hover:text-[#5A3516] transition-colors duration-300 group-hover:scale-105 transform">Nombre Apellido</h3>
+                                <h3 class="text-[#7A5526] text-3xl font-bold mb-3 text-center group-hover:text-[#5A3516] transition-colors duration-300 group-hover:scale-105 transform">Name Surname</h3>
                                 <div class="relative mb-4 transform group-hover:scale-110 transition-all duration-300">
                                     <div class="relative px-8 py-3 rounded-2xl overflow-hidden" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; border: 3px solid #86622F; box-shadow: 0 6px 15px rgba(0,0,0,0.3);">
                                         <div class="absolute inset-0 bg-gradient-to-r from-[#FFD700]/30 via-transparent to-[#FFD700]/30 group-hover:animate-pulse"></div>
-                                        <p class="relative text-[#FFED9A] text-lg font-black tracking-wide" style="-webkit-text-stroke: 2px #86622F; paint-order: stroke fill; text-shadow: 0 4px 8px rgba(0,0,0,0.3);">CREADOR JUEGO 3</p>
+                                        <p class="relative text-[#FFED9A] text-lg font-black tracking-wide" style="-webkit-text-stroke: 2px #86622F; paint-order: stroke fill; text-shadow: 0 4px 8px rgba(0,0,0,0.3);">GAME 3 CREATOR</p>
                                     </div>
                                 </div>
                                 <p class="text-[#7A5526] text-lg text-center leading-relaxed font-medium group-hover:text-[#5A3516] transition-colors duration-300">
-                                    Desarrollador del Valle de las Frutas y sus cantidades mágicas.
+                                    Developer of The Fruit Valley and its magical quantities.
                                 </p>
                             </div>
                         </div>
 
-                        <!-- Miembro 4 -->
+                        <!-- Member 4 -->
                         <div class="group bg-gradient-to-b from-[#FFEAA7] to-[#F9D68A] rounded-3xl shadow-xl overflow-hidden transform hover:scale-105 hover:shadow-2xl transition-all duration-500 hover:rotate-2 cursor-pointer relative" style="border: 4px solid #D4A574;">
-                            <!-- Overlay amarillo al hacer hover -->
                             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#FFD700]/20 to-[#FFA500]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none"></div>
                             
                             <div class="p-8 flex flex-col items-center relative z-20">
                                 <div class="w-64 h-64 mb-6 rounded-full overflow-hidden relative transform group-hover:scale-110 transition-all duration-500" style="border: 5px solid #86622F; box-shadow: 0 8px 20px rgba(0,0,0,0.3);">
-                                    <img src="{{ asset('imagenes/miembro4.jpg') }}" alt="Miembro 4" class="w-full h-full object-cover">
-                                    <!-- Animación de brillo al pasar por encima -->
+                                    <img src="{{ asset('imagenes/miembro4.jpg') }}" alt="Member 4" class="w-full h-full object-cover">
                                     <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                                 </div>
-                                <h3 class="text-[#7A5526] text-3xl font-bold mb-3 text-center group-hover:text-[#5A3516] transition-colors duration-300 group-hover:scale-105 transform">Nombre Apellido</h3>
+                                <h3 class="text-[#7A5526] text-3xl font-bold mb-3 text-center group-hover:text-[#5A3516] transition-colors duration-300 group-hover:scale-105 transform">Name Surname</h3>
                                 <div class="relative mb-4 transform group-hover:scale-110 transition-all duration-300">
                                     <div class="relative px-8 py-3 rounded-2xl overflow-hidden" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; border: 3px solid #86622F; box-shadow: 0 6px 15px rgba(0,0,0,0.3);">
                                         <div class="absolute inset-0 bg-gradient-to-r from-[#FFD700]/30 via-transparent to-[#FFD700]/30 group-hover:animate-pulse"></div>
-                                        <p class="relative text-[#FFED9A] text-lg font-black tracking-wide" style="-webkit-text-stroke: 2px #86622F; paint-order: stroke fill; text-shadow: 0 4px 8px rgba(0,0,0,0.3);">CREADOR JUEGO 4</p>
+                                        <p class="relative text-[#FFED9A] text-lg font-black tracking-wide" style="-webkit-text-stroke: 2px #86622F; paint-order: stroke fill; text-shadow: 0 4px 8px rgba(0,0,0,0.3);">GAME 4 CREATOR</p>
                                     </div>
                                 </div>
                                 <p class="text-[#7A5526] text-lg text-center leading-relaxed font-medium group-hover:text-[#5A3516] transition-colors duration-300">
-                                    Arquitecto del Jardín de las Restas y sus manzanas mágicas.
+                                    Architect of The Subtraction Garden and its magical apples.
                                 </p>
                             </div>
                         </div>
@@ -205,28 +197,28 @@
         <!-- Footer -->
         <footer class="w-full bg-gradient-to-b from-[#2d5016] to-[#1a3d0f] py-8 mt-20" style="border-top: 4px solid #4a7c2e;">
             <div class="max-w-4xl mx-auto px-8">
-                <!-- Enlaces principales -->
+                <!-- Main links -->
                 <div class="flex flex-wrap justify-center items-center gap-6 mb-6">
                     <a href="#" class="text-[#4CAF50] text-sm font-normal hover:text-gray-200 transition-colors duration-300 hover:scale-105 transform">
-                        Contacto
+                        Contact
                     </a>
                     <span class="text-white text-lg">•</span>
                     <a href="#" class="text-[#4CAF50] text-sm font-normal hover:text-gray-200 transition-colors duration-300 hover:scale-105 transform">
-                        Política de Privacidad
+                        Privacy Policy
                     </a>
                     <span class="text-white text-lg">•</span>
                     <a href="#" class="text-[#4CAF50] text-sm font-normal hover:text-gray-200 transition-colors duration-300 hover:scale-105 transform">
-                        Términos de Servicio
+                        Terms of Service
                     </a>
                 </div>
                 
-                <!-- Separador -->
+                <!-- Separator -->
                 <div class="h-px bg-white rounded-full mb-5 max-w-xs mx-auto opacity-50"></div>
                 
                 <!-- Copyright -->
                 <div class="text-center">
                     <p class="text-[#4CAF50] text-sm font-light">
-                        © 2025 El Bosque de los Números Perdidos
+                        © 2025 The Forest of Lost Numbers
                     </p>
                 </div>
         </div>
@@ -238,29 +230,29 @@
             const puenteText = document.getElementById('puente-link-text');
             const puenteBadge = document.getElementById('puente-badge');
             
-            // Verificar si las sumas están completadas
+            // Check if additions are completed
             let unlocked = false;
             try {
                 unlocked = localStorage.getItem('sumasCompleted') === 'true';
             } catch (e) {
-                console.log('Error leyendo localStorage:', e);
+                console.log('Error reading localStorage:', e);
                 unlocked = false;
             }
             
-            console.log('Puente desbloqueado:', unlocked);
+            console.log('Bridge unlocked:', unlocked);
             
-            // Si está desbloqueado, habilitar el enlace
+            // If unlocked, enable the link
             if (unlocked && puenteLink) {
                 puenteLink.classList.remove('opacity-60', 'cursor-not-allowed', 'pointer-events-none');
                 puenteLink.classList.add('hover:scale-105');
-                if (puenteText) puenteText.textContent = 'Jugar';
+                if (puenteText) puenteText.textContent = 'Play';
                 if (puenteBadge) puenteBadge.classList.add('hidden');
             } else if (puenteLink) {
-                // Si está bloqueado, prevenir navegación y mostrar mensaje
+                // If locked, prevent navigation and show message
                 puenteLink.addEventListener('click', function(e) {
                     if (!unlocked) {
                         e.preventDefault();
-                        alert('¡Completa primero el Bosque de las Sumas para desbloquear este nivel!');
+                        alert('Complete The Addition Forest first to unlock this level!');
                     }
                 });
             }
