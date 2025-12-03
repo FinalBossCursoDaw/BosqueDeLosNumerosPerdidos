@@ -25,7 +25,17 @@
                     </a>
                 </li>
                 <li class="transform hover:scale-110 transition-all duration-300">
+<<<<<<< HEAD
                     <a href="#conocenos" class="hover:text-[#FED32C] transition-all text-stroke relative group">
+=======
+                    <a href="{{ route('clasificacion') }}" class="hover:text-[#FED32C] transition-all text-stroke relative group">
+                        Clasificación
+                        <span class="absolute -bottom-2 left-0 w-0 h-1 bg-[#FED32C] group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                </li>
+                <li class="transform hover:scale-110 transition-all duration-300">
+                    <a href="conocenos" class="hover:text-[#FED32C] transition-all text-stroke relative group">
+>>>>>>> Clasificacion
                         Conócenos
                         <span class="absolute -bottom-2 left-0 w-0 h-1 bg-[#FED32C] group-hover:w-full transition-all duration-300"></span>
                     </a>

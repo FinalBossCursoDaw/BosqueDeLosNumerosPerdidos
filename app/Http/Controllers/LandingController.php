@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Partida;
+use App\Models\Juego;
+use Illuminate\Support\Facades\DB;
 
 class LandingController extends Controller
 {
@@ -84,5 +87,76 @@ class LandingController extends Controller
     public function juegosPuente()
     {
         return view('puente-logica');
+    }
+
+    /**
+     * Mostrar la clasificación del juego de sumas
+     */
+    public function clasificacion()
+    {
+        // Obtener ambos juegos
+        $juegoSumas = Juego::where('nombre', 'El Bosque de las Sumas')->first();
+        $juegoPuente = Juego::where('nombre', 'Puente de la Lógica')->first();
+        
+        // Datos del juego de sumas
+        $topJugadoresSumas = [];
+        $totalPartidasSumas = 0;
+        $partidasCompletadasSumas = 0;
+        $promedioPuntuacionSumas = 0;
+        
+        if ($juegoSumas) {
+            $topJugadoresSumas = Partida::with(['usuario', 'sesion'])
+                ->where('id_juego', $juegoSumas->id_juego)
+                ->orderBy('puntuacion', 'desc')
+                ->orderBy('tiempo_seg', 'asc')
+                ->take(10)
+                ->get();
+
+            $totalPartidasSumas = Partida::where('id_juego', $juegoSumas->id_juego)->count();
+            
+            $partidasCompletadasSumas = Partida::where('id_juego', $juegoSumas->id_juego)
+                ->whereHas('sesion', function($query) {
+                    $query->where('errors', '>', 0);
+                })
+                ->count();
+            
+            $promedioPuntuacionSumas = Partida::where('id_juego', $juegoSumas->id_juego)
+                ->avg('puntuacion') ?? 0;
+        }
+        
+        // Datos del puente de la lógica
+        $topJugadoresPuente = [];
+        $totalPartidasPuente = 0;
+        $partidasCompletadasPuente = 0;
+        $promedioTiempoPuente = 0;
+        
+        if ($juegoPuente) {
+            $topJugadoresPuente = Partida::with(['usuario', 'sesion'])
+                ->where('id_juego', $juegoPuente->id_juego)
+                ->orderBy('tiempo_seg', 'asc')
+                ->orderBy('puntuacion', 'desc')
+                ->take(10)
+                ->get();
+
+            $totalPartidasPuente = Partida::where('id_juego', $juegoPuente->id_juego)->count();
+            
+            $partidasCompletadasPuente = Partida::where('id_juego', $juegoPuente->id_juego)
+                ->where('puntuacion', '>', 0)
+                ->count();
+            
+            $promedioTiempoPuente = Partida::where('id_juego', $juegoPuente->id_juego)
+                ->avg('tiempo_seg') ?? 0;
+        }
+
+        return view('clasificacion', compact(
+            'topJugadoresSumas',
+            'totalPartidasSumas',
+            'partidasCompletadasSumas',
+            'promedioPuntuacionSumas',
+            'topJugadoresPuente',
+            'totalPartidasPuente',
+            'partidasCompletadasPuente',
+            'promedioTiempoPuente'
+        ));
     }
 }

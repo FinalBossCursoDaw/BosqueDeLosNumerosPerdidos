@@ -118,6 +118,7 @@ class CookieController extends Controller
                 // Puente de la lógica
                 $response->cookie('puente_last_time', $validated['tiempo_seg'], 525600, '/', null, false, false);
                 $response->cookie('puente_last_errors', $validated['errores'] ?? 0, 525600, '/', null, false, false);
+                $response->cookie('puente_last_helps_clicks', $validated['helps_clicks'] ?? 0, 525600, '/', null, false, false);
                 $response->cookie('puente_last_completed', $validated['completado'] ?? false, 525600, '/', null, false, false);
                 
                 // Actualizar mejor tiempo si corresponde
@@ -125,6 +126,7 @@ class CookieController extends Controller
                 if ($validated['completado'] && (!$bestTime || $validated['tiempo_seg'] < $bestTime)) {
                     $response->cookie('puente_best_time', $validated['tiempo_seg'], 525600, '/', null, false, false);
                     $response->cookie('puente_best_errors', $validated['errores'] ?? 0, 525600, '/', null, false, false);
+                    $response->cookie('puente_best_helps_clicks', $validated['helps_clicks'] ?? 0, 525600, '/', null, false, false);
                 }
                 
                 // Guardar historial
@@ -133,6 +135,7 @@ class CookieController extends Controller
                 array_unshift($history, [
                     'time' => $validated['tiempo_seg'],
                     'errors' => $validated['errores'] ?? 0,
+                    'helps_clicks' => $validated['helps_clicks'] ?? 0,
                     'stage' => 3,
                     'completed' => $validated['completado'] ?? false,
                     'date' => now()->toISOString()
