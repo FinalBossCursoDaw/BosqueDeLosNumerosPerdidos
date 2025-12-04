@@ -1,0 +1,153 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #b0eaff;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #ff6384;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+}
+
+#frutas {
+    font-size: 45px;
+    margin: 20px;
+    min-height: 70px;
+}
+
+.opciones {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn {
+    font-size: 1.4rem;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: #ffdd57;
+    transition: 0.2s;
+    width: 100%;
+}
+
+.btn:hover {
+    background: #ffd000;
+}
+
+#mensaje {
+    font-size: 1.4rem;
+    margin-top: 20px;
+    min-height: 40px;
+}
+
+#mensaje.ok {
+    color: #2ecc71;
+}
+
+#mensaje.error {
+    color: #e74c3c;
+}
+
+/* Contenedor de animaciones */
+#animaciones {
+    position: relative;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+#sol, #nube {
+    opacity: 0;
+    transition: all 0.8s ease;
+    position: absolute;
+}
+
+/* Sol */
+#sol {
+    font-size: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+}
+
+/* Nube */
+#nube {
+    font-size: 65px;
+    top: 20px;
+    left: 0;
+}
+
+#nube.activo {
+    opacity: 1;
+}
+
+/* Estilo responsive del juego */
+/* Estilo para el tamaño de las tablets */
+@media (min-width: 600px){
+    h1 { font-size: 2rem; }
+    #frutas { font-size: 60px; min-height: 85px; }
+    .opciones { flex-direction: row; justify-content: center; }
+    .btn { width: auto; padding: 10px 25px; }
+
+    #sol { top: 10px; transform: translateX(-50%) scale(0.7); }
+    #sol.activo { transform: translateX(-50%) scale(1); }
+
+    #nube { left: -40px; }
+    #nube.activo { left: 10px; }
+}
+
+/* Estilo para el tamaño de los ordenadores */
+@media (min-width: 900px){
+    body { padding: 40px; }
+    h1 { font-size: 2.5rem; }
+    #frutas { font-size: 80px; min-height: 100px; }
+    .opciones { gap: 25px; }
+    .btn { font-size: 1.8rem; padding: 15px 40px; }
+    #mensaje { font-size: 2rem; }
+
+    #sol { font-size: 80px; top: -120px; transform: translateX(-50%) scale(0.5); }
+    #sol.activo { top: 0; transform: translateX(-50%) scale(1); }
+
+    #nube { font-size: 90px; left: -150px; }
+    #nube.activo { left: 20px; }
+}
+
+/* Estilo para el tamaño de los móviles pequeños */
+@media (max-width: 399px) {
+
+    h1 { font-size: 1.4rem; }
+
+    #frutas { font-size: 35px; min-height: 60px; }
+
+    .btn { font-size: 1.2rem; padding: 8px; }
+
+    #mensaje { font-size: 1.2rem; }
+
+    #sol { font-size: 45px; top: 5px; }
+
+    #nube { font-size: 55px; top: 15px; left: 0; }
+}
+
+/* Estilo para el tamaño de los móviles medianos */
+@media (min-width: 400px) and (max-width: 599px) {
+
+    h1 { font-size: 1.5rem; }
+
+    #frutas { font-size: 40px; min-height: 65px; }
+
+    .opciones { flex-direction: column; gap: 12px; }
+
+    .btn { font-size: 1.3rem; padding: 10px; }
+
+    #mensaje { font-size: 1.3rem; }
+
+    /* Sol */
+    #sol { font-size: 50px; top: 5px; }
+
+    /* Nube */
+    #nube { font-size: 60px; top: 15px; left: 0; }
+}
