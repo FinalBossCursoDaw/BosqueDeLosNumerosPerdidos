@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends(Auth::check() ? 'landing-auth-header' : 'landing-header')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valle de las Frutas Encantadas</title>
+@section('title', 'Valle de las Frutas Encantadas')
+
+@section('body-class', 'm-0 p-0 overflow-hidden bg-cover bg-center h-screen pt-32')
+
+@section('styles')
     <link rel="stylesheet" href="{{ asset('css/valleDeLasFrutasEncantadas.css') }}">
-</head>
+@endsection
 
-<body>
+@section('content')
     <h1>🍎 Valle de las Frutas Encantadas 🍓</h1>
     <script src="{{ asset('js/valleDeLasFrutasEncantadas.js') }}"></script>
-</body>
-
-</html>
+@endsection
