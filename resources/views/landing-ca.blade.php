@@ -29,12 +29,21 @@
                     <div class="p-6 flex flex-col flex-grow">
                         <img src="{{ asset('imagenes/BosqueDeLasSumas.png') }}" alt="El Bosc de les Sumes" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
                         <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Ajuda a Sumina a tornar la vida al bosc resolent divertides sumes.</p>
-                        <a href="{{ route('juego-sumas') }}" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 mt-auto" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
-                            <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
-                                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
-                            </svg>
-                            Jugar
-                        </a>
+                        @auth
+                            <a href="{{ route('juego-sumas') }}" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 mt-auto" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
+                                <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
+                                    <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                                </svg>
+                                Jugar
+                            </a>
+                        @else
+                            <button onclick="alert('Has d\'iniciar sessió per jugar')" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
+                                <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
+                                    <path d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Bloquejat
+                            </button>
+                        @endauth
                     </div>
                 </div>
 
@@ -43,15 +52,24 @@
                     <div class="p-6 flex flex-col flex-grow">
                         <img src="{{ asset('imagenes/PuenteDeLaLogica.png') }}" alt="Creua el riu" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
                         <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Ajuda a Sumina a creuar el riu ordenant els números en l'ordre correcte, seràs capaç?</p>
-                        <div class="relative">
-                            <a id="puente-link" href="{{ route('puente-logica') }}" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed pointer-events-none" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
+                        @auth
+                            <div class="relative">
+                                <a id="puente-link" href="{{ route('puente-logica') }}" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed pointer-events-none" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
+                                    <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
+                                        <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                                    </svg>
+                                    <span id="puente-link-text">Bloquejat</span>
+                                </a>
+                                <span id="puente-badge" class="absolute -top-3 -right-3 bg-[#E91E63] text-white text-xs font-black px-3 py-1 rounded-full shadow-lg">Acaba les sumes</span>
+                            </div>
+                        @else
+                            <button onclick="alert('Has d\'iniciar sessió per jugar')" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
                                 <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
-                                    <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                                    <path d="M5 13l4 4L19 7"/>
                                 </svg>
-                                <span id="puente-link-text">Bloquejat</span>
-                            </a>
-                            <span id="puente-badge" class="absolute -top-3 -right-3 bg-[#E91E63] text-white text-xs font-black px-3 py-1 rounded-full shadow-lg">Acaba les sumes</span>
-                        </div>
+                                Bloquejat
+                            </button>
+                        @endauth
                     </div>
                 </div>
 
@@ -60,11 +78,11 @@
                     <div class="p-6 flex flex-col flex-grow">
                         <img src="{{ asset('imagenes/ValleDeLasFrutas.png') }}" alt="Números i fruites" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
                         <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Ajuda a Sumina a relacionar els números amb la quantitat correcta de fruites màgiques.</p>
-                        <button class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 mt-auto" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
+                        <button onclick="alert('Has d\'iniciar sessió per jugar')" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
                             <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
-                                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                                <path d="M5 13l4 4L19 7"/>
                             </svg>
-                            Jugar
+                            Bloquejat
                         </button>
                     </div>
                 </div>
@@ -74,11 +92,11 @@
                     <div class="p-6 flex flex-col flex-grow">
                         <img src="{{ asset('imagenes/JardinDeLasRestas.png') }}" alt="Recollir pomes" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
                         <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Ajuda a Sumina a recollir les pomes correctes resolent restes màgiques.</p>
-                        <button class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 mt-auto" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
+                        <button onclick="alert('Has d\'iniciar sessió per jugar')" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
                             <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
-                                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                                <path d="M5 13l4 4L19 7"/>
                             </svg>
-                            Jugar
+                            Bloquejat
                         </button>
                     </div>
                 </div>

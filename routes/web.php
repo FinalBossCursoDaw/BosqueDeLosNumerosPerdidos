@@ -18,12 +18,12 @@ Route::get('/register', [LandingController::class, 'register'])->name('register'
 Route::post('/register', [AuthController::class, 'register'])->name('register.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Juegos (accesibles sin autenticación)
-Route::get('/juegos/sumas', [LandingController::class, 'juegoSumas'])->name('juego-sumas');
-Route::get('/juegos/puente-logica', [LandingController::class, 'juegosPuente'])->name('puente-logica');
-
 // Rutas protegidas (requieren autenticación)
 Route::middleware('auth')->group(function () {
+    // Juegos
+    Route::get('/juegos/sumas', [LandingController::class, 'juegoSumas'])->name('juego-sumas');
+    Route::get('/juegos/puente-logica', [LandingController::class, 'juegosPuente'])->name('puente-logica');
+    
     // Rutas para leer cookies desde Laravel
     Route::get('/cookies/sumas', [CookieController::class, 'getSumasData'])->name('cookies.sumas');
     Route::get('/cookies/puente', [CookieController::class, 'getPuenteData'])->name('cookies.puente');

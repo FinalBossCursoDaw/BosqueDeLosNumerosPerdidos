@@ -19,7 +19,12 @@
                     </svg>
                     Enter the Story
                 </a>
-                
+                <a href="{{ route('clasificacion') }}" class="relative text-[#FFED9A] py-4 px-12 rounded-2xl text-3xl transition-all duration-300 shadow-2xl inline-flex items-center gap-3 hover:scale-105 overflow-hidden" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 8px #86622F; paint-order: stroke fill;">
+                    <svg class="w-16 h-16" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="4">
+                        <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
+                    Rankings
+                </a>
             </div>
 
             <!-- Categories Section -->
@@ -29,12 +34,21 @@
                     <div class="p-6 flex flex-col flex-grow">
                         <img src="{{ asset('imagenes/BosqueDeLasSumas.png') }}" alt="Addition Forest" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
                         <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Help Sumina bring life back to the forest by solving fun additions.</p>
-                        <a href="{{ route('juego-sumas') }}" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 mt-auto" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
-                            <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
-                                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
-                            </svg>
-                            Play
-                        </a>
+                        @auth
+                            <a href="{{ route('juego-sumas') }}" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 mt-auto" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
+                                <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
+                                    <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                                </svg>
+                                Play
+                            </a>
+                        @else
+                            <button onclick="alert('You must log in to play')" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
+                                <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
+                                    <path d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Locked
+                            </button>
+                        @endauth
                     </div>
                 </div>
 
@@ -43,15 +57,24 @@
                     <div class="p-6 flex flex-col flex-grow">
                         <img src="{{ asset('imagenes/PuenteDeLaLogica.png') }}" alt="Cross the river" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
                         <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Help Sumina cross the river by ordering the numbers correctly. Can you do it?</p>
-                        <div class="relative">
-                            <a id="puente-link" href="{{ route('puente-logica') }}" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed pointer-events-none" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
+                        @auth
+                            <div class="relative">
+                                <a id="puente-link" href="{{ route('puente-logica') }}" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed pointer-events-none" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
+                                    <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
+                                        <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                                    </svg>
+                                    <span id="puente-link-text">Locked</span>
+                                </a>
+                                <span id="puente-badge" class="absolute -top-3 -right-3 bg-[#E91E63] text-white text-xs font-black px-3 py-1 rounded-full shadow-lg">Finish additions</span>
+                            </div>
+                        @else
+                            <button onclick="alert('You must log in to play')" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
                                 <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
-                                    <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                                    <path d="M5 13l4 4L19 7"/>
                                 </svg>
-                                <span id="puente-link-text">Locked</span>
-                            </a>
-                            <span id="puente-badge" class="absolute -top-3 -right-3 bg-[#E91E63] text-white text-xs font-black px-3 py-1 rounded-full shadow-lg">Finish additions</span>
-                        </div>
+                                Locked
+                            </button>
+                        @endauth
                     </div>
                 </div>
 
@@ -60,11 +83,11 @@
                     <div class="p-6 flex flex-col flex-grow">
                         <img src="{{ asset('imagenes/ValleDeLasFrutas.png') }}" alt="Numbers and fruits" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
                         <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Help Sumina match numbers with the correct quantity of magical fruits.</p>
-                        <button class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 mt-auto" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
+                        <button onclick="alert('You must log in to play')" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
                             <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
-                                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                                <path d="M5 13l4 4L19 7"/>
                             </svg>
-                            Play
+                            Locked
                         </button>
                     </div>
                 </div>
@@ -74,11 +97,11 @@
                     <div class="p-6 flex flex-col flex-grow">
                         <img src="{{ asset('imagenes/JardinDeLasRestas.png') }}" alt="Pick apples" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
                         <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Help Sumina pick the correct apples by solving magical subtractions.</p>
-                        <button class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 mt-auto" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
+                        <button onclick="alert('You must log in to play')" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
                             <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
-                                <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                                <path d="M5 13l4 4L19 7"/>
                             </svg>
-                            Play
+                            Locked
                         </button>
                     </div>
                 </div>
