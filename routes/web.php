@@ -6,7 +6,12 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CookieController;
 
 Route::get('/', [LandingController::class, 'index'])->name('home');
+Route::get('/ca', [LandingController::class, 'indexCatalan'])->name('home.ca');
+Route::get('/en', [LandingController::class, 'indexEnglish'])->name('home.en');
 Route::get('/historia', [LandingController::class, 'historia'])->name('historia');
+Route::get('/ca/historia', [LandingController::class, 'historiaCatalan'])->name('historia.ca');
+Route::get('/en/historia', [LandingController::class, 'historiaEnglish'])->name('historia.en');
+Route::get('/clasificacion', [LandingController::class, 'clasificacion'])->name('clasificacion');
 Route::get('/login', [LandingController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::get('/register', [LandingController::class, 'register'])->name('register');

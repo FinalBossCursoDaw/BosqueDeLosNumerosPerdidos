@@ -14,10 +14,6 @@
             0%, 100% { box-shadow: 0 0 20px rgba(254, 211, 44, 0.3); }
             50% { box-shadow: 0 0 40px rgba(254, 211, 44, 0.6); }
         }
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0); }
-            50% { opacity: 1; transform: scale(1); }
-        }
         .animate-float {
             animation: float 3s ease-in-out infinite;
         }
@@ -28,9 +24,6 @@
             background-image: url('{{ asset('imagenes/header-wood.png') }}');
             background-size: cover;
             background-position: center;
-        }
-        .sparkle {
-            animation: sparkle 2s ease-in-out infinite;
         }
     </style>
 </head>
@@ -48,7 +41,7 @@
     <div class="absolute bottom-20 right-20 w-24 h-24 bg-[#FFEAA7]/20 rounded-full blur-xl animate-float" style="animation-delay: 1.5s;"></div>
     
     <!-- Logo superior izquierdo -->
-    <div class="absolute top-8 left-8 z-20 ">
+    <div class="absolute top-8 left-8 z-20">
         <img src="{{ asset('imagenes/logojuego.png') }}" alt="Logo" class="h-40 w-auto transform">
     </div>
     
@@ -68,8 +61,6 @@
             <!-- Formulario de login -->
             <div class="w-full md:w-3/5 bg-gradient-to-br from-[#FFEAA7]/30 via-[#F9D68A]/30 to-[#E8C574]/30 rounded-3xl p-3 shadow-2xl backdrop-blur-sm" style="border: 8px solid #4CAF50; box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 30px rgba(254, 211, 44, 0.3), 0 0 0 2px rgba(255, 234, 167, 0.5) inset;">
                 <div class="wood-texture rounded-2xl p-12 relative overflow-hidden" style="box-shadow: 0 10px 30px rgba(0,0,0,0.3) inset;">
-                  
-                    
                     <!-- Efecto de brillo superior e inferior -->
                     <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-[#FED32C]/50 to-transparent animate-pulse"></div>
                     <div class="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-transparent via-[#FED32C]/50 to-transparent animate-pulse"></div>
@@ -100,10 +91,10 @@
                     <form action="{{ route('login.post') }}" method="POST" class="space-y-7">
                         @csrf
                         
-                        <!-- Email o Usuario -->
+                        <!-- Email -->
                         <div>
                             <label for="email" class="block text-[#FFEAA7] text-lg font-bold mb-3 flex items-center gap-2" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8);">
-                                <span class="text-[#FED32C] text-2xl"></span> Email
+                                <span class="text-[#FED32C] text-2xl">✉️</span> Email
                             </label>
                             <input 
                                 type="email" 
@@ -120,7 +111,7 @@
                         <!-- Contraseña -->
                         <div>
                             <label for="password" class="block text-[#FFEAA7] text-lg font-bold mb-3 flex items-center gap-2" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8);">
-                                <span class="text-[#FED32C] text-2xl"></span> Contraseña
+                                <span class="text-[#FED32C] text-2xl">🔒</span> Contraseña
                             </label>
                             <input 
                                 type="password" 
@@ -133,12 +124,10 @@
                             >
                         </div>
                         
-                        
-                        
                         <!-- Botón Iniciar Sesión -->
                         <button 
                             type="submit" 
-                            class="w-full bg-[#4CAF50] hover:bg-[#45A049] text-white font-black text-2xl py-6 rounded-2xl shadow-lg border-[6px] border-[#2E7D32]"
+                            class="w-full bg-[#4CAF50] hover:bg-[#45A049] text-white font-black text-2xl py-6 rounded-2xl shadow-lg border-[6px] border-[#2E7D32] transition-all duration-300 hover:scale-105"
                         >
                             Iniciar Sesión
                         </button>
