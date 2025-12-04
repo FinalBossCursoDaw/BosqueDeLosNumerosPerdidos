@@ -38,7 +38,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Procesar el registro
+     * Procesar el registro de nuevo usuario
      */
     public function register(Request $request)
     {

@@ -1,0 +1,21 @@
+#menu-dropdown {
+    background: #2F6310 !important;
+    border-color: #FED32C !important;
+    background-image: none !important;
+}
+#menu-dropdown button {
+    background: #2F6310 !important;
+    color: #fff !important;
+    margin-top: 0.25rem;
+}
+#menu-dropdown button:hover {
+    background: #21510b !important;
+    color: #fff !important;
+    box-shadow: 0 2px 8px 0 rgba(47, 99, 16, 0.18);
+}
+#menu-dropdown #exit-btn {
+    color: #FED32C !important;
+}
+#menu-dropdown #exit-btn:hover {
+    color: #fff !important;
+}
