@@ -34,4 +34,3 @@ Route::middleware('auth')->group(function () {
     Route::post('/partida/save', [CookieController::class, 'savePartida'])->name('partida.save');
     Route::get('/partidas', [CookieController::class, 'getPartidas'])->name('partidas.get');
 });
->>>>>>> main
