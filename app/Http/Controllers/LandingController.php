@@ -43,4 +43,12 @@ class LandingController extends Controller
     {
         return view('historia');
     }
+
+    /**
+     * Mostrar la página del juego del valle de las frutas encantadas
+     */
+    public function juegoValle()
+    {
+        return view('valleDeLasFrutasEncantadas');
+    }
 }

@@ -81,7 +81,7 @@
                             <p class="text-[#FED32C] text-lg mb-4 text-center"
                                 style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Ayuda a Sumina a
                                 relacionar los números con la cantidad correcta de frutas mágicas.</p>
-                            <button
+                            <button href="{{ route('juegoValle') }}"
                                 class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105 mt-auto"
                                 style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
                                 <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
