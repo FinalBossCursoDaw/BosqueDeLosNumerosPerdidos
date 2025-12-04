@@ -78,12 +78,24 @@
                     <div class="p-6 flex flex-col flex-grow">
                         <img src="{{ asset('imagenes/ValleDeLasFrutas.png') }}" alt="Números i fruites" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
                         <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Ajuda a Sumina a relacionar els números amb la quantitat correcta de fruites màgiques.</p>
-                        <button onclick="alert('Has d\'iniciar sessió per jugar')" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
-                            <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
-                                <path d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Bloquejat
-                        </button>
+                        @auth
+                            <div class="relative">
+                                <a id="valle-link" href="{{ route('valle-frutas') }}" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed pointer-events-none" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
+                                    <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
+                                        <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                                    </svg>
+                                    <span id="valle-link-text">Bloquejat</span>
+                                </a>
+                                <span id="valle-badge" class="absolute -top-3 -right-3 bg-[#E91E63] text-white text-xs font-black px-3 py-1 rounded-full shadow-lg">Acaba el pont</span>
+                            </div>
+                        @else
+                            <button onclick="alert('Has d\'iniciar sessió per jugar')" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
+                                <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
+                                    <path d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Bloquejat
+                            </button>
+                        @endauth
                     </div>
                 </div>
 
@@ -169,10 +181,10 @@
                             
                             <div class="p-8 flex flex-col items-center relative z-20">
                                 <div class="w-64 h-64 mb-6 rounded-full overflow-hidden relative transform group-hover:scale-110 transition-all duration-500" style="border: 5px solid #86622F; box-shadow: 0 8px 20px rgba(0,0,0,0.3);">
-                                    <img src="{{ asset('imagenes/miembro3.jpg') }}" alt="Membre 3" class="w-full h-full object-cover">
+                                    <img src="{{ asset('imagenes/RaulH.png') }}" alt="Raúl Hernández" class="w-full h-full object-cover">
                                     <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                                 </div>
-                                <h3 class="text-[#7A5526] text-3xl font-bold mb-3 text-center group-hover:text-[#5A3516] transition-colors duration-300 group-hover:scale-105 transform">Nom Cognom</h3>
+                                <h3 class="text-[#7A5526] text-3xl font-bold mb-3 text-center group-hover:text-[#5A3516] transition-colors duration-300 group-hover:scale-105 transform">Raúl Hernández</h3>
                                 <div class="relative mb-4 transform group-hover:scale-110 transition-all duration-300">
                                     <div class="relative px-8 py-3 rounded-2xl overflow-hidden" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; border: 3px solid #86622F; box-shadow: 0 6px 15px rgba(0,0,0,0.3);">
                                         <div class="absolute inset-0 bg-gradient-to-r from-[#FFD700]/30 via-transparent to-[#FFD700]/30 group-hover:animate-pulse"></div>
@@ -248,29 +260,49 @@
             const puenteText = document.getElementById('puente-link-text');
             const puenteBadge = document.getElementById('puente-badge');
             
-            // Verificar si les sumes estan completades
-            let unlocked = false;
+            const valleLink = document.getElementById('valle-link');
+            const valleText = document.getElementById('valle-link-text');
+            const valleBadge = document.getElementById('valle-badge');
+            
+            // Verificar si les sumes i el pont estan completats
+            let sumasCompleted = false;
+            let puenteCompleted = false;
             try {
-                unlocked = localStorage.getItem('sumasCompleted') === 'true';
+                sumasCompleted = localStorage.getItem('sumasCompleted') === 'true';
+                puenteCompleted = localStorage.getItem('puenteCompleted') === 'true';
             } catch (e) {
                 console.log('Error llegint localStorage:', e);
-                unlocked = false;
             }
             
-            console.log('Pont desbloquejat:', unlocked);
+            console.log('Sumes completades:', sumasCompleted);
+            console.log('Pont completat:', puenteCompleted);
             
-            // Si està desbloquejat, habilitar l'enllaç
-            if (unlocked && puenteLink) {
+            // Desbloquejar Pont de la Lògica si les sumes estan completes
+            if (sumasCompleted && puenteLink) {
                 puenteLink.classList.remove('opacity-60', 'cursor-not-allowed', 'pointer-events-none');
                 puenteLink.classList.add('hover:scale-105');
                 if (puenteText) puenteText.textContent = 'Jugar';
                 if (puenteBadge) puenteBadge.classList.add('hidden');
             } else if (puenteLink) {
-                // Si està bloquejat, prevenir navegació i mostrar missatge
                 puenteLink.addEventListener('click', function(e) {
-                    if (!unlocked) {
+                    if (!sumasCompleted) {
                         e.preventDefault();
                         alert('Completa primer el Bosc de les Sumes per desbloquejar aquest nivell!');
+                    }
+                });
+            }
+            
+            // Desbloquejar Vall de les Fruites si el pont està complet
+            if (puenteCompleted && valleLink) {
+                valleLink.classList.remove('opacity-60', 'cursor-not-allowed', 'pointer-events-none');
+                valleLink.classList.add('hover:scale-105');
+                if (valleText) valleText.textContent = 'Jugar';
+                if (valleBadge) valleBadge.classList.add('hidden');
+            } else if (valleLink) {
+                valleLink.addEventListener('click', function(e) {
+                    if (!puenteCompleted) {
+                        e.preventDefault();
+                        alert('Completa primer el Pont de la Lògica per desbloquejar aquest nivell!');
                     }
                 });
             }

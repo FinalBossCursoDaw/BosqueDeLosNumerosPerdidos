@@ -90,6 +90,14 @@ class LandingController extends Controller
     }
 
     /**
+     * Mostrar el juego del Valle de las Frutas
+     */
+    public function vallesFrutas()
+    {
+        return view('valleDeLasFrutasEncantadas');
+    }
+
+    /**
      * Mostrar la clasificación del juego de sumas
      */
     public function clasificacion()

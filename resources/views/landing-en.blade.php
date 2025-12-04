@@ -19,12 +19,7 @@
                     </svg>
                     Enter the Story
                 </a>
-                <a href="{{ route('clasificacion') }}" class="relative text-[#FFED9A] py-4 px-12 rounded-2xl text-3xl transition-all duration-300 shadow-2xl inline-flex items-center gap-3 hover:scale-105 overflow-hidden" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 8px #86622F; paint-order: stroke fill;">
-                    <svg class="w-16 h-16" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="4">
-                        <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-                    </svg>
-                    Rankings
-                </a>
+                
             </div>
 
             <!-- Categories Section -->
@@ -83,12 +78,24 @@
                     <div class="p-6 flex flex-col flex-grow">
                         <img src="{{ asset('imagenes/ValleDeLasFrutas.png') }}" alt="Numbers and fruits" class="w-full h-64 object-contain mb-4" style="border-radius: 25px;">
                         <p class="text-[#FED32C] text-lg mb-4 text-center" style="-webkit-text-stroke: 4px #86622F; paint-order: stroke fill;">Help Sumina match numbers with the correct quantity of magical fruits.</p>
-                        <button onclick="alert('You must log in to play')" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
-                            <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
-                                <path d="M5 13l4 4L19 7"/>
-                            </svg>
-                            Locked
-                        </button>
+                        @auth
+                            <div class="relative">
+                                <a id="valle-link" href="{{ route('valle-frutas') }}" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed pointer-events-none" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
+                                    <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
+                                        <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
+                                    </svg>
+                                    <span id="valle-link-text">Locked</span>
+                                </a>
+                                <span id="valle-badge" class="absolute -top-3 -right-3 bg-[#E91E63] text-white text-xs font-black px-3 py-1 rounded-full shadow-lg">Finish bridge</span>
+                            </div>
+                        @else
+                            <button onclick="alert('You must log in to play')" class="w-full text-[#FFED9A] font-bold py-3 px-6 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 mt-auto opacity-60 cursor-not-allowed" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 3px #86622F; paint-order: stroke fill;">
+                                <svg class="w-6 h-6" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="2">
+                                    <path d="M5 13l4 4L19 7"/>
+                                </svg>
+                                Locked
+                            </button>
+                        @endauth
                     </div>
                 </div>
 
@@ -174,10 +181,10 @@
                             
                             <div class="p-8 flex flex-col items-center relative z-20">
                                 <div class="w-64 h-64 mb-6 rounded-full overflow-hidden relative transform group-hover:scale-110 transition-all duration-500" style="border: 5px solid #86622F; box-shadow: 0 8px 20px rgba(0,0,0,0.3);">
-                                    <img src="{{ asset('imagenes/miembro3.jpg') }}" alt="Member 3" class="w-full h-full object-cover">
+                                    <img src="{{ asset('imagenes/RaulH.png') }}" alt="Raúl Hernández" class="w-full h-full object-cover">
                                     <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                                 </div>
-                                <h3 class="text-[#7A5526] text-3xl font-bold mb-3 text-center group-hover:text-[#5A3516] transition-colors duration-300 group-hover:scale-105 transform">Name Surname</h3>
+                                <h3 class="text-[#7A5526] text-3xl font-bold mb-3 text-center group-hover:text-[#5A3516] transition-colors duration-300 group-hover:scale-105 transform">Raúl Hernández</h3>
                                 <div class="relative mb-4 transform group-hover:scale-110 transition-all duration-300">
                                     <div class="relative px-8 py-3 rounded-2xl overflow-hidden" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; border: 3px solid #86622F; box-shadow: 0 6px 15px rgba(0,0,0,0.3);">
                                         <div class="absolute inset-0 bg-gradient-to-r from-[#FFD700]/30 via-transparent to-[#FFD700]/30 group-hover:animate-pulse"></div>
@@ -253,29 +260,49 @@
             const puenteText = document.getElementById('puente-link-text');
             const puenteBadge = document.getElementById('puente-badge');
             
-            // Check if additions are completed
-            let unlocked = false;
+            const valleLink = document.getElementById('valle-link');
+            const valleText = document.getElementById('valle-link-text');
+            const valleBadge = document.getElementById('valle-badge');
+            
+            // Check if additions and bridge are completed
+            let sumasCompleted = false;
+            let puenteCompleted = false;
             try {
-                unlocked = localStorage.getItem('sumasCompleted') === 'true';
+                sumasCompleted = localStorage.getItem('sumasCompleted') === 'true';
+                puenteCompleted = localStorage.getItem('puenteCompleted') === 'true';
             } catch (e) {
                 console.log('Error reading localStorage:', e);
-                unlocked = false;
             }
             
-            console.log('Bridge unlocked:', unlocked);
+            console.log('Additions completed:', sumasCompleted);
+            console.log('Bridge completed:', puenteCompleted);
             
-            // If unlocked, enable the link
-            if (unlocked && puenteLink) {
+            // Unlock Logic Bridge if additions are complete
+            if (sumasCompleted && puenteLink) {
                 puenteLink.classList.remove('opacity-60', 'cursor-not-allowed', 'pointer-events-none');
                 puenteLink.classList.add('hover:scale-105');
                 if (puenteText) puenteText.textContent = 'Play';
                 if (puenteBadge) puenteBadge.classList.add('hidden');
             } else if (puenteLink) {
-                // If locked, prevent navigation and show message
                 puenteLink.addEventListener('click', function(e) {
-                    if (!unlocked) {
+                    if (!sumasCompleted) {
                         e.preventDefault();
                         alert('Complete The Addition Forest first to unlock this level!');
+                    }
+                });
+            }
+            
+            // Unlock Fruit Valley if bridge is complete
+            if (puenteCompleted && valleLink) {
+                valleLink.classList.remove('opacity-60', 'cursor-not-allowed', 'pointer-events-none');
+                valleLink.classList.add('hover:scale-105');
+                if (valleText) valleText.textContent = 'Play';
+                if (valleBadge) valleBadge.classList.add('hidden');
+            } else if (valleLink) {
+                valleLink.addEventListener('click', function(e) {
+                    if (!puenteCompleted) {
+                        e.preventDefault();
+                        alert('Complete The Logic Bridge first to unlock this level!');
                     }
                 });
             }

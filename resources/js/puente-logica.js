@@ -296,6 +296,15 @@ function finishGame() {
     gameActive = false;
     stopTimer();
     updateStageUI();
+    
+    // Guardar en localStorage para desbloquear el siguiente juego
+    try {
+        localStorage.setItem('puenteCompleted', 'true');
+        console.log('✅ Puente de la Lógica completado - Valle de las Frutas desbloqueado');
+    } catch (e) {
+        console.error('Error guardando en localStorage:', e);
+    }
+    
     saveGameData(true); // Guardar en cookies
     const msg = document.getElementById('result-message');
     if (msg) {

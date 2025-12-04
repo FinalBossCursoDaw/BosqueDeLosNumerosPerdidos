@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
     // Juegos
     Route::get('/juegos/sumas', [LandingController::class, 'juegoSumas'])->name('juego-sumas');
     Route::get('/juegos/puente-logica', [LandingController::class, 'juegosPuente'])->name('puente-logica');
+    Route::get('/juegos/valle-frutas', [LandingController::class, 'vallesFrutas'])->name('valle-frutas');
     
     // Rutas para leer cookies desde Laravel
     Route::get('/cookies/sumas', [CookieController::class, 'getSumasData'])->name('cookies.sumas');
