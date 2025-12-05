@@ -6,16 +6,15 @@
 
 @section('styles')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="{{ asset('css/valleDeLasFrutasEncantadas.css') }}">
+    @vite(['resources/css/valleDeLasFrutasEncantadas.css', 'resources/js/valleDeLasFrutasEncantadas.js'])
 @endsection
 
-@section('content')
-    <h1>🍎 Valle de las Frutas Encantadas 🍓</h1>
-    @section('scripts')
-        <script>
-            window.VALLEFRUTASENCANTADAS_GAME_URL = "{{ route('valle-frutas') }}";
-            window.SAVE_PARTIDA_URL = "{{ route('partida.save') }}";
-            document.addEventListener('DOMContentLoaded', function() {
+
+@section('scripts')
+    <script>
+        window.VALLEFRUTASENCANTADAS_GAME_URL = "{{ route('valle-frutas') }}";
+        window.SAVE_PARTIDA_URL = "{{ route('partida.save') }}";
+        document.addEventListener('DOMContentLoaded', function() {
             const menuBtn = document.getElementById('menu-btn');
             const dropdown = document.getElementById('menu-dropdown');
             let dropdownOpen = false;
@@ -26,20 +25,18 @@
             });
             document.addEventListener('click', function(e) {
                 if (dropdownOpen && !dropdown.contains(e.target) && e.target !== menuBtn) {
-                    dropdown.classList.add('hidden');
-                    dropdownOpen = false;
+                dropdown.classList.add('hidden');
+                dropdownOpen = false;
                 }
             });
             document.getElementById('restart-btn').addEventListener('click', function() {
                 if (typeof restartGame === 'function') restartGame(true);
-                dropdown.classList.add('hidden');
-                dropdownOpen = false;
-            });
+                    dropdown.classList.add('hidden');
+                    dropdownOpen = false;
+                });
             document.getElementById('exit-btn').addEventListener('click', function() {
                 window.location.href = "{{ route('home') }}";
             });
         });
-        </script>
-    @endsection
-    <script src="{{ asset('resources/js/valleDeLasFrutasEncantadas.js') }}"></script>
+    </script>
 @endsection
