@@ -15,20 +15,20 @@ let partida = {
 //-- DOM Dinámico --
 const body = document.body;
 
-// Contenedor principal
+// Contenedor principal - EXACTO AL PROTOTIPO
 const gameContainer = document.createElement("div");
 gameContainer.className = "game-container";
 body.appendChild(gameContainer);
 
-// Título EXACTO como el prototipo
+// Título EXACTO como el prototipo (dos líneas)
 const tituloContainer = document.createElement("div");
 tituloContainer.className = "titulo-container";
 tituloContainer.innerHTML = `
-            <h1 class="titulo-principal">VALLE DE LAS<br>FRUTAS ENCANTADAS</h1>
-        `;
+    <h1 class="titulo-principal">VALLE DE LAS<br>FRUTAS ENCANTADAS</h1>
+`;
 gameContainer.appendChild(tituloContainer);
 
-// Pregunta EXACTA como el prototipo
+// Pregunta EXACTA como el prototipo (tres líneas)
 const preguntaContainer = document.createElement("div");
 preguntaContainer.className = "pregunta-container";
 const preguntaDiv = document.createElement("div");
@@ -48,7 +48,7 @@ const botonesContainer = document.createElement("div");
 botonesContainer.className = "botones-container";
 gameContainer.appendChild(botonesContainer);
 
-// Crear botones (3 botones como en el prototipo)
+// Crear 3 botones como en el prototipo (con números 4, 5, 6 inicialmente)
 const botones = [];
 for (let i = 0; i < 3; i++) {
     const btn = document.createElement("button");
@@ -175,12 +175,16 @@ async function saveToDatabase(completed) {
 let frutaActual = "";
 
 function nuevoDesafio() {
+    // Seleccionar fruta aleatoria
     frutaActual = frutasDisponibles[Math.floor(Math.random() * frutasDisponibles.length)];
+    
+    // Cantidad aleatoria entre 1 y 5
     cantidadCorrecta = Math.floor(Math.random() * 5) + 1;
 
     // Limpiar y crear frutas
     frutasContainer.innerHTML = '';
 
+    // Crear las frutas según la cantidad correcta
     for (let i = 0; i < cantidadCorrecta; i++) {
         const frutaSpan = document.createElement("span");
         frutaSpan.className = "fruta-item";
@@ -188,12 +192,18 @@ function nuevoDesafio() {
         frutasContainer.appendChild(frutaSpan);
     }
 
-    // Generar opciones
+    // Generar opciones - una correcta y dos incorrectas
     opciones = [
         cantidadCorrecta,
         cantidadCorrecta + 1,
         Math.max(1, cantidadCorrecta - 1)
-    ].sort(() => Math.random() - 0.5);
+    ];
+    
+    // Mezclar aleatoriamente las opciones
+    for (let i = opciones.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [opciones[i], opciones[j]] = [opciones[j], opciones[i]];
+    }
 
     // Asignar números a botones
     for (let i = 0; i < 3; i++) {
@@ -262,24 +272,68 @@ function mostrarConteoAyuda() {
 
     const interval = setInterval(() => {
         if (index < frutas.length) {
-            frutas[index].style.transform = 'scale(1.3)';
-            frutas[index].style.transition = 'transform 0.3s';
+            // Resaltar la fruta actual
+            frutas[index].style.transform = 'scale(1.4)';
+            frutas[index].style.filter = 'brightness(1.3)';
+            frutas[index].style.transition = 'all 0.3s ease';
 
-            setTimeout(() => {
-                frutas[index].style.transform = 'scale(1)';
-            }, 300);
+            // Restaurar la fruta anterior (si existe)
+            if (index > 0) {
+                frutas[index - 1].style.transform = 'scale(1)';
+                frutas[index - 1].style.filter = 'brightness(1)';
+            }
 
             index++;
         } else {
+            // Restaurar todas las frutas al final
+            setTimeout(() => {
+                frutas.forEach(fruta => {
+                    fruta.style.transform = 'scale(1)';
+                    fruta.style.filter = 'brightness(1)';
+                });
+            }, 300);
+            
             clearInterval(interval);
+            
+            // Continuar con nuevo desafío después de un breve delay
+            setTimeout(nuevoDesafio, 1500);
         }
-    }, 500);
+    }, 600);
+}
+
+// Función para reiniciar el juego
+function restartGame(confirmar = false) {
+    if (confirmar && !confirm('¿Estás seguro de que quieres reiniciar el juego? Se perderá el progreso actual.')) {
+        return;
+    }
+    
+    partida = {
+        aciertos: 0,
+        errores: 0,
+        racha: 0,
+        mejorRacha: 0,
+        totalJugadas: 0
+    };
+    
+    nuevoDesafio();
+    guardarPartidaEnCookies();
+    
+    // Mostrar mensaje de reinicio
+    mensajeDiv.innerHTML = "¡Juego reiniciado!";
+    mensajeDiv.className = "mensaje acierto mostrar";
+    
+    setTimeout(() => {
+        mensajeDiv.className = "mensaje";
+    }, 2000);
 }
 
 // --- INICIAR EL JUEGO ---
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Cargar partida guardada
     cargarPartidaDesdeCookies();
+    
+    // Iniciar primer desafío
     nuevoDesafio();
 
     // Guardar periódicamente cada 30 segundos
@@ -294,8 +348,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 60000);
 
-    // Guardar al cerrar
+    // Guardar al cerrar la página
     window.addEventListener('beforeunload', () => {
         saveToDatabase(false);
     });
+
+    // Hacer disponible la función restartGame globalmente
+    window.restartGame = restartGame;
 });
