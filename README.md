@@ -1,59 +1,546 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# El Bosque de los Números Perdidos
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Descripción del proyecto
 
-## About Laravel
+**El Bosque de los Números Perdidos** es una aplicación web educativa desarrollada con Laravel, Blade, JavaScript, HTML y CSS.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+El objetivo del proyecto es crear una experiencia interactiva para que los usuarios puedan practicar conceptos matemáticos y lógicos mediante minijuegos ambientados en un mundo de fantasía.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+La aplicación incluye una página principal, una sección de historia, sistema de registro e inicio de sesión, juegos interactivos y guardado de partidas mediante base de datos y cookies.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## Tecnologías utilizadas
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+* PHP
+* Laravel
+* Blade
+* JavaScript
+* HTML
+* CSS
+* Tailwind CSS
+* Vite
+* SQLite
+* Composer
+* NPM
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## Funcionalidades principales
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+La aplicación permite:
 
-### Premium Partners
+* Visualizar una landing page con la presentación del juego.
+* Acceder a una página de historia del mundo del bosque.
+* Registrar nuevos usuarios.
+* Iniciar sesión y cerrar sesión.
+* Jugar a minijuegos educativos.
+* Guardar datos de partida.
+* Guardar información de progreso mediante cookies.
+* Consultar partidas guardadas del usuario autenticado.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## Minijuegos incluidos
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### El Bosque de las Sumas
 
-## Code of Conduct
+Juego matemático en el que el usuario debe resolver operaciones de suma.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Funcionamiento principal:
 
-## Security Vulnerabilities
+* Se muestra una operación de suma.
+* Caen flores con diferentes números.
+* El usuario debe hacer clic en la flor que contiene la respuesta correcta.
+* El juego controla puntuación, vidas, racha, tiempo y operaciones resueltas.
+* El progreso se guarda automáticamente cada cierto tiempo.
+* Al finalizar, se guardan los resultados de la partida.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Archivo JavaScript principal:
 
-## License
+```txt
+resources/js/juego-sumas.js
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Vista principal:
+
+```txt
+resources/views/juego-sumas.blade.php
+```
+
+---
+
+### Puente de la Lógica
+
+Juego de lógica en el que el usuario debe ordenar piedras siguiendo una secuencia.
+
+Funcionamiento principal:
+
+* El usuario debe colocar números en el orden correcto.
+* El juego tiene varias fases.
+* Se controla el número de errores.
+* Se mide el tiempo empleado.
+* Al completar el juego se guarda la partida.
+
+Archivo JavaScript principal:
+
+```txt
+resources/js/puente-logica.js
+```
+
+Vista principal:
+
+```txt
+resources/views/puente-logica.blade.php
+```
+
+---
+
+## Estructura del proyecto
+
+```txt
+BosqueDeLosNumerosPerdidos/
+├── app/
+│   ├── Http/
+│   │   └── Controllers/
+│   │       ├── AuthController.php
+│   │       ├── CookieController.php
+│   │       └── LandingController.php
+│   └── Models/
+│       ├── Fecha.php
+│       ├── Juego.php
+│       ├── Partida.php
+│       ├── Sesion.php
+│       ├── User.php
+│       └── Usuario.php
+├── database/
+│   ├── migrations/
+│   └── seeders/
+├── public/
+│   ├── css/
+│   └── imagenes/
+├── resources/
+│   ├── css/
+│   ├── js/
+│   │   ├── juego-sumas.js
+│   │   └── puente-logica.js
+│   └── views/
+│       ├── landing.blade.php
+│       ├── historia.blade.php
+│       ├── login.blade.php
+│       ├── register.blade.php
+│       ├── juego-sumas.blade.php
+│       └── puente-logica.blade.php
+├── routes/
+│   └── web.php
+├── composer.json
+├── package.json
+└── README.md
+```
+
+---
+
+## Controladores principales
+
+### LandingController
+
+Controlador encargado de cargar las vistas principales de la aplicación.
+
+Rutas asociadas:
+
+* Página principal.
+* Historia.
+* Login.
+* Registro.
+* Juego de sumas.
+* Puente de la lógica.
+
+Archivo:
+
+```txt
+app/Http/Controllers/LandingController.php
+```
+
+---
+
+### AuthController
+
+Controlador encargado de la autenticación.
+
+Funciones principales:
+
+* Procesar inicio de sesión.
+* Registrar nuevos usuarios.
+* Cerrar sesión.
+
+Archivo:
+
+```txt
+app/Http/Controllers/AuthController.php
+```
+
+---
+
+### CookieController
+
+Controlador encargado de guardar y recuperar datos de partidas.
+
+Funciones principales:
+
+* Guardar partidas en la base de datos.
+* Crear y actualizar cookies del juego de sumas.
+* Crear y actualizar cookies del puente de la lógica.
+* Recuperar datos guardados.
+* Consultar las últimas partidas del usuario.
+
+Archivo:
+
+```txt
+app/Http/Controllers/CookieController.php
+```
+
+---
+
+## Modelos principales
+
+### Usuario
+
+Representa los usuarios registrados en la aplicación.
+
+Tabla asociada:
+
+```txt
+Usuarios
+```
+
+---
+
+### Juego
+
+Representa los juegos disponibles en la aplicación.
+
+Tabla asociada:
+
+```txt
+Juegos
+```
+
+---
+
+### Sesion
+
+Representa una sesión de juego.
+
+Tabla asociada:
+
+```txt
+Sesiones
+```
+
+---
+
+### Fecha
+
+Representa la fecha en la que se realiza una partida.
+
+Tabla asociada:
+
+```txt
+Fechas
+```
+
+---
+
+### Partida
+
+Representa una partida guardada por un usuario.
+
+Tabla asociada:
+
+```txt
+Partidas
+```
+
+---
+
+## Base de datos
+
+El proyecto utiliza SQLite en local.
+
+Configuración principal del archivo `.env`:
+
+```env
+DB_CONNECTION=sqlite
+DB_DATABASE=database.sqlite
+```
+
+Tablas principales del proyecto:
+
+* `Usuarios`
+* `Juegos`
+* `Sesiones`
+* `Fechas`
+* `Partidas`
+
+La base de datos permite guardar usuarios, juegos, sesiones y resultados de partidas.
+
+---
+
+## Rutas principales
+
+Las rutas están definidas en:
+
+```txt
+routes/web.php
+```
+
+Rutas públicas:
+
+```txt
+GET  /                    Página principal
+GET  /historia            Historia del juego
+GET  /login               Formulario de login
+POST /login               Procesar login
+GET  /register            Formulario de registro
+POST /register            Procesar registro
+POST /logout              Cerrar sesión
+GET  /juegos/sumas        Juego El Bosque de las Sumas
+GET  /juegos/puente-logica Juego Puente de la Lógica
+```
+
+Rutas protegidas por autenticación:
+
+```txt
+GET  /cookies/sumas       Obtener cookies del juego de sumas
+GET  /cookies/puente      Obtener cookies del puente de la lógica
+GET  /cookies/all         Obtener todos los datos guardados en cookies
+POST /partida/save        Guardar una partida
+GET  /partidas            Obtener partidas del usuario
+```
+
+---
+
+## Instalación del proyecto
+
+### 1. Clonar el repositorio
+
+```bash
+git clone URL_DEL_REPOSITORIO
+cd BosqueDeLosNumerosPerdidos
+```
+
+---
+
+### 2. Instalar dependencias de PHP
+
+```bash
+composer install
+```
+
+---
+
+### 3. Instalar dependencias de Node
+
+```bash
+npm install
+```
+
+---
+
+### 4. Crear archivo de entorno
+
+```bash
+cp .env.example .env
+```
+
+En Windows también se puede copiar manualmente `.env.example` y renombrarlo a `.env`.
+
+---
+
+### 5. Generar la clave de Laravel
+
+```bash
+php artisan key:generate
+```
+
+---
+
+### 6. Crear base de datos SQLite
+
+Crear el archivo:
+
+```txt
+database/database.sqlite
+```
+
+Después, revisar el `.env`:
+
+```env
+DB_CONNECTION=sqlite
+DB_DATABASE=database.sqlite
+```
+
+---
+
+### 7. Ejecutar migraciones
+
+```bash
+php artisan migrate
+```
+
+---
+
+### 8. Compilar assets
+
+Para desarrollo:
+
+```bash
+npm run dev
+```
+
+Para producción:
+
+```bash
+npm run build
+```
+
+---
+
+### 9. Levantar servidor Laravel
+
+```bash
+php artisan serve
+```
+
+La aplicación se abrirá normalmente en:
+
+```txt
+http://127.0.0.1:8000
+```
+
+---
+
+## Comandos útiles
+
+Instalar dependencias PHP:
+
+```bash
+composer install
+```
+
+Instalar dependencias JS:
+
+```bash
+npm install
+```
+
+Ejecutar Laravel:
+
+```bash
+php artisan serve
+```
+
+Ejecutar Vite:
+
+```bash
+npm run dev
+```
+
+Compilar assets:
+
+```bash
+npm run build
+```
+
+Ejecutar migraciones:
+
+```bash
+php artisan migrate
+```
+
+Limpiar caché:
+
+```bash
+php artisan optimize:clear
+```
+
+---
+
+## Sistema de guardado
+
+El proyecto utiliza dos sistemas para guardar información:
+
+### Base de datos
+
+Se guardan partidas relacionadas con:
+
+* Usuario.
+* Juego.
+* Fecha.
+* Sesión.
+* Puntuación.
+* Tiempo.
+
+### Cookies
+
+Se utilizan cookies para guardar datos rápidos del progreso del usuario, como:
+
+* Última puntuación.
+* Mejor puntuación.
+* Mejor tiempo.
+* Historial reciente.
+* Errores.
+* Estado de partida completada.
+
+---
+
+## Seguridad
+
+El proyecto utiliza:
+
+* Validación de formularios en Laravel.
+* Hash de contraseñas.
+* Sistema de autenticación.
+* Protección CSRF en formularios y peticiones POST.
+* Rutas protegidas mediante middleware `auth`.
+
+---
+
+## Estado del proyecto
+
+El proyecto está en una fase educativa y funcional.
+
+Actualmente incluye:
+
+* Landing page.
+* Historia.
+* Login.
+* Registro.
+* Dos minijuegos.
+* Guardado de partidas.
+* Uso de cookies.
+* Base de datos.
+* Documentación en Wiki de GitHub.
+
+---
+
+## Posibles mejoras futuras
+
+* Añadir más niveles o minijuegos.
+* Crear un panel de usuario con estadísticas.
+* Mostrar ranking de puntuaciones.
+* Mejorar la adaptación responsive.
+* Añadir sistema de roles completo.
+* Mejorar la gestión de partidas guardadas.
+* Añadir tests específicos para los controladores principales.
+
+---
+
+## Autores
+
+Proyecto desarrollado como práctica educativa de inicio de curso.
+
+Autores:
+
+* Víctor Calvo
+* Adrià Gómez
