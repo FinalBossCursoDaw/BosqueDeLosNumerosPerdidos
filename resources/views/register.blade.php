@@ -116,13 +116,9 @@
                                 required
                             >
                         </div>
-<<<<<<< HEAD
-    <div>
-=======
 
                         <!-- Email -->
                         <div>
->>>>>>> c0fca6e9cf0e4c7229343a668d7376887e219098
                             <label for="email" class="block text-[#FFEAA7] text-base font-bold mb-2 flex items-center gap-2" style="text-shadow: 3px 3px 6px rgba(0,0,0,0.8);">
                                 <span class="text-[#FED32C] text-xl"></span> Email
                             </label>

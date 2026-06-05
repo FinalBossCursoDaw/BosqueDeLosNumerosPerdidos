@@ -1,4 +1,4 @@
-@extends(Auth::check() ? 'landing-auth-header' : 'landing-header')
+@extends(Auth::check() ? 'landing-auth-header-ca' : 'landing-header-ca')
 
 @section('content')
     <style>
@@ -48,9 +48,9 @@
                 <!-- Hero Section -->
                 <div class="text-center mb-12 relative">
                     <h1 class="text-yellow-400 text-8xl font-bold transition-all relative group text-stroke-h1 mb-8">
-                        LA HISTORIA
+                        LA HISTÒRIA
                     </h1>
-                    <p class="text-4xl text-[#7A5526] font-bold mb-8" style="-webkit-text-stroke: 3px #FFFFFF; paint-order: stroke fill;">Descubre el origen de esta mágica aventura</p>
+                    <p class="text-4xl text-[#7A5526] font-bold mb-8" style="-webkit-text-stroke: 3px #FFFFFF; paint-order: stroke fill;">Descobreix l'origen d'aquesta màgica aventura</p>
                 </div>
 
                 <!-- Timeline Container -->
@@ -64,17 +64,17 @@
                             <!-- Content -->
                             <div class="md:w-5/12 md:text-right md:pr-16">
                                 <div class="inline-block bg-gradient-to-br from-[#4CAF50] to-[#45A049] px-6 py-2 rounded-full mb-4 shadow-lg">
-                                    <span class="text-white font-black text-sm tracking-wider">CAPÍTULO I</span>
+                                    <span class="text-white font-black text-sm tracking-wider">CAPÍTOL I</span>
                                 </div>
                                 <h2 class="text-5xl md:text-6xl font-bold mb-3 text-[#FED32C]" style="-webkit-text-stroke: 6px #86622F; paint-order: stroke fill;">
-                                    El Bosque Encantado
+                                    El Bosc Encantat
                                 </h2>
                                 <div class="bg-gradient-to-br from-[#FFEAA7] to-[#F9D68A] backdrop-blur-xl rounded-2xl p-5 border-4 border-yellow-400 shadow-2xl" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-blend-mode: overlay;">
                                     <p class="text-[#5A3516] text-xl leading-relaxed mb-2 font-semibold">
-                                        Hace mucho tiempo existía un <span class="text-[#FED32C]" style="-webkit-text-stroke: 1px #86622F;">    Bosque Mágico</span> lleno de vida y color. Los árboles brillaban con luz dorada, las flores cantaban melodías dulces.
+                                        Fa molt de temps existia un <span class="text-[#FED32C]" style="-webkit-text-stroke: 1px #86622F;">Bosc Màgic</span> ple de vida i color. Els arbres brillaven amb llum daurada, les flors cantaven melodies dolces.
                                     </p>
                                     <p class="text-[#5A3516] text-xl leading-relaxed font-semibold">
-                                        En él vivía <span class="text-[#FED32C]" style="-webkit-text-stroke: 1px #86622F;">Sumina</span>, una abeja guardiana que protegía los números mágicos del bosque.
+                                        En ell vivia <span class="text-[#FED32C]" style="-webkit-text-stroke: 1px #86622F;">Sumina</span>, una abella guardiana que protegia els números màgics del bosc.
                                     </p>
                                 </div>
                             </div>
@@ -95,20 +95,20 @@
                             <!-- Content -->
                             <div class="md:w-5/12 md:pl-16">
                                 <div class="inline-block bg-gradient-to-br from-[#4CAF50] to-[#45A049] px-6 py-2 rounded-full mb-4 shadow-lg">
-                                    <span class="text-[#FFFBE9] font-black text-sm tracking-wider">CAPÍTULO II</span>
+                                    <span class="text-[#FFFBE9] font-black text-sm tracking-wider">CAPÍTOL II</span>
                                 </div>
                                 <h2 class="text-5xl md:text-6xl font-bold mb-3 text-[#FED32C]" style="-webkit-text-stroke: 6px #86622F; paint-order: stroke fill;">
-                                    La Tragedia
+                                    La Tragèdia
                                 </h2>
                                 <div class="bg-gradient-to-br from-[#FFEAA7] to-[#F9D68A] backdrop-blur-xl rounded-2xl p-5 border-4 border-yellow-400 shadow-2xl" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-blend-mode: overlay;">
                                     <p class="text-[#5A3516] text-xl leading-relaxed mb-2 font-semibold">
-                                        Una mañana, Sumina despertó y notó que algo terrible había sucedido...
+                                        Un matí, Sumina va despertar i va notar que alguna cosa terrible havia succeït...
                                     </p>
                                     <p class="text-[#5A3516] text-xl leading-relaxed mb-2 font-semibold">
-                                        <span class="text-[#FED32C]" style="-webkit-text-stroke: 1px #86622F;">¡Los números mágicos habían desaparecido!</span>
+                                        <span class="text-[#FED32C]" style="-webkit-text-stroke: 1px #86622F;">Els números màgics havien desaparegut!</span>
                                     </p>
                                     <p class="text-[#5A3516] text-xl leading-relaxed font-semibold">
-                                        Sin ellos, el bosque perdió su magia. Los árboles dejaron de brillar, las flores dejaron de cantar.
+                                        Sense ells, el bosc va perdre la seva màgia. Els arbres van deixar de brillar, les flors van deixar de cantar.
                                     </p>
                                 </div>
                             </div>
@@ -121,17 +121,17 @@
                             <!-- Content -->
                             <div class="md:w-5/12 md:text-right md:pr-16">
                                 <div class="inline-block bg-gradient-to-br from-[#4CAF50] to-[#45A049] px-6 py-2 rounded-full mb-4 shadow-lg">
-                                    <span class="text-white font-black text-sm tracking-wider">CAPÍTULO III</span>
+                                    <span class="text-white font-black text-sm tracking-wider">CAPÍTOL III</span>
                                 </div>
                                 <h2 class="text-5xl md:text-6xl font-bold mb-3 text-[#FED32C]" style="-webkit-text-stroke: 6px #86622F; paint-order: stroke fill;">
-                                    Tu Misión
+                                    La Teva Missió
                                 </h2>
                                 <div class="bg-gradient-to-br from-[#FFEAA7] to-[#F9D68A] backdrop-blur-xl rounded-2xl p-5 border-4 border-yellow-400 shadow-2xl" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-blend-mode: overlay;">
                                     <p class="text-[#5A3516] text-xl leading-relaxed mb-2 font-semibold">
-                                        Sumina necesita tu ayuda para encontrar los números perdidos y restaurar la magia del bosque.
+                                        Sumina necessita la teva ajuda per trobar els números perduts i restaurar la màgia del bosc.
                                     </p>
                                     <p class="text-[#5A3516] text-xl leading-relaxed font-semibold">
-                                        <span class="text-[#FED32C]" style="-webkit-text-stroke: 1px #86622F;">Resuelve acertijos matemáticos</span>, ordena números, relaciona cantidades y completa operaciones para recuperar la magia.
+                                        <span class="text-[#FED32C]" style="-webkit-text-stroke: 1px #86622F;">Resol enigmes matemàtics</span>, ordena números, relaciona quantitats i completa operacions per recuperar la màgia.
                                     </p>
                                 </div>
                             </div>
@@ -139,7 +139,7 @@
                             <!-- Image -->
                             <div class="md:w-5/12 md:pl-16">
                                 <div class="relative group-hover:scale-105 transition-transform duration-500">
-                                    <div class="absolute inset-0  rounded-full blur-3xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
+                                    <div class="absolute inset-0 rounded-full blur-3xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
                                     <img src="{{ asset('imagenes/logojuego.png') }}" alt="Logo" class="relative w-64 h-64 mx-auto" style="filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4));">
                                 </div>
                             </div>
@@ -150,9 +150,9 @@
                     <div class="relative mt-16 mb-12" style="animation: reveal 0.8s ease-out 0.6s backwards;">
                         <div class="text-center mb-8">
                             <h2 class="text-yellow-400 text-6xl font-bold mb-4 text-stroke-h1">
-                                Explora el Bosque
+                                Explora el Bosc
                             </h2>
-                            <p class="text-4xl text-[#7A5526] font-bold mb-8" style="-webkit-text-stroke: 3px #FFFFFF; paint-order: stroke fill;">Cuatro desafíos únicos te esperan</p>
+                            <p class="text-4xl text-[#7A5526] font-bold mb-8" style="-webkit-text-stroke: 3px #FFFFFF; paint-order: stroke fill;">Quatre desafiaments únics t'esperen</p>
                         </div>
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -165,9 +165,9 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <h3 class="text-[#5A3516] text-3xl font-black mb-2">El Bosque de las Sumas</h3>
+                                        <h3 class="text-[#5A3516] text-3xl font-black mb-2">El Bosc de les Sumes</h3>
                                         <p class="text-[#5A3516] text-xl leading-relaxed font-semibold">
-                                            Resuelve operaciones de suma para devolver la vida a los árboles mágicos del bosque.
+                                            Resol operacions de suma per tornar la vida als arbres màgics del bosc.
                                         </p>
                                     </div>
                                 </div>
@@ -182,9 +182,9 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <h3 class="text-[#5A3516] text-3xl font-black mb-2">El Puente de la Lógica</h3>
+                                        <h3 class="text-[#5A3516] text-3xl font-black mb-2">El Pont de la Lògica</h3>
                                         <p class="text-[#5A3516] text-xl leading-relaxed font-semibold">
-                                            Ordena correctamente los números para cruzar el río y continuar tu aventura.
+                                            Ordena correctament els números per creuar el riu i continuar la teva aventura.
                                         </p>
                                     </div>
                                 </div>
@@ -199,9 +199,9 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <h3 class="text-[#5A3516] text-3xl font-black mb-2">El Valle de las Frutas</h3>
+                                        <h3 class="text-[#5A3516] text-3xl font-black mb-2">La Vall de les Fruites</h3>
                                         <p class="text-[#5A3516] text-xl leading-relaxed font-semibold">
-                                            Relaciona números con las cantidades correctas de frutas mágicas del valle.
+                                            Relaciona números amb les quantitats correctes de fruites màgiques de la vall.
                                         </p>
                                     </div>
                                 </div>
@@ -216,9 +216,9 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <h3 class="text-[#5A3516] text-3xl font-black mb-2">El Jardín de las Restas</h3>
+                                        <h3 class="text-[#5A3516] text-3xl font-black mb-2">El Jardí de les Restes</h3>
                                         <p class="text-[#5A3516] text-xl leading-relaxed font-semibold">
-                                            Resuelve operaciones de resta para recoger las manzanas correctas del jardín.
+                                            Resol operacions de resta per recollir les pomes correctes del jardí.
                                         </p>
                                     </div>
                                 </div>
@@ -229,11 +229,11 @@
 
                 <!-- CTA Button -->
                 <div class="text-center mt-12 mb-12" style="animation: reveal 0.8s ease-out 0.8s backwards;">
-                    <a href="{{ route('home') }}" class="relative text-[#FFED9A] py-4 px-12 rounded-2xl text-3xl transition-all duration-300 shadow-2xl inline-flex items-center gap-3 hover:scale-105 overflow-hidden" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 8px #86622F; paint-order: stroke fill;">
+                    <a href="{{ route('home.ca') }}" class="relative text-[#FFED9A] py-4 px-12 rounded-2xl text-3xl transition-all duration-300 shadow-2xl inline-flex items-center gap-3 hover:scale-105 overflow-hidden" style="background-image: url('{{ asset('imagenes/header-wood.png') }}'); background-size: cover; background-position: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); -webkit-text-stroke: 8px #86622F; paint-order: stroke fill;">
                         <svg class="w-16 h-16" fill="#FED32C" viewBox="0 0 20 20" stroke="#86622F" stroke-width="4">
                             <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"/>
                         </svg>
-                        Comenzar la Aventura
+                        Començar l'Aventura
                     </a>
                 </div>
             </div>
@@ -242,18 +242,18 @@
         <!-- Footer -->
         <footer class="w-full bg-gradient-to-b from-[#2d5016] to-[#1a3d0f] py-8 mt-16" style="border-top: 4px solid #4a7c2e;">
             <div class="max-w-4xl mx-auto px-8">
-                <!-- Enlaces principales -->
+                <!-- Enllaços principals -->
                 <div class="flex flex-wrap justify-center items-center gap-6 mb-6">
                     <a href="#" class="text-[#4CAF50] text-sm font-normal hover:text-gray-200 transition-colors duration-300 hover:scale-105 transform">
-                        Contacto
+                        Contacte
                     </a>
                     <span class="text-white text-lg">•</span>
                     <a href="#" class="text-[#4CAF50] text-sm font-normal hover:text-gray-200 transition-colors duration-300 hover:scale-105 transform">
-                        Política de Privacidad
+                        Política de Privacitat
                     </a>
                     <span class="text-white text-lg">•</span>
                     <a href="#" class="text-[#4CAF50] text-sm font-normal hover:text-gray-200 transition-colors duration-300 hover:scale-105 transform">
-                        Términos de Servicio
+                        Termes de Servei
                     </a>
                 </div>
                 
@@ -263,7 +263,7 @@
                 <!-- Copyright -->
                 <div class="text-center">
                     <p class="text-[#4CAF50] text-sm font-light">
-                        © 2025 El Bosque de los Números Perdidos
+                        © 2025 El Bosc dels Números Perduts
                     </p>
                 </div>
             </div>

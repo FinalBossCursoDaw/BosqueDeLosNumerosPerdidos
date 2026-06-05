@@ -1,0 +1,299 @@
+/* RESET Y ESTILOS BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #87CEEB 0%, #98FB98 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+/* CONTENEDOR PRINCIPAL - EXACTO AL PROTOTIPO */
+.game-container {
+    background-color: white;
+    border-radius: 20px;
+    padding: 40px 30px;
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 8px solid #4CAF50;
+    position: relative;
+}
+
+/* TÍTULO - EXACTO AL PROTOTIPO */
+.titulo-container {
+    margin-bottom: 25px;
+    line-height: 1.1;
+}
+
+.titulo-principal {
+    font-size: 36px;
+    font-weight: 900;
+    color: #FF5722;
+    text-align: center;
+    line-height: 1;
+    margin-bottom: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
+}
+
+/* PREGUNTA - EXACTO AL PROTOTIPO */
+.pregunta-container {
+    margin: 25px 0 35px 0;
+    line-height: 1.2;
+}
+
+.pregunta {
+    font-size: 26px;
+    font-weight: 700;
+    color: #2196F3;
+    text-align: center;
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+}
+
+/* FRUTAS - EXACTO AL PROTOTIPO */
+.frutas-container {
+    margin: 35px 0;
+    min-height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 25px;
+    border-radius: 15px;
+    background-color: #f9f9f9;
+    border: 3px dashed #4CAF50;
+}
+
+.fruta-item {
+    font-size: 80px;
+    margin: 0 8px;
+    transition: transform 0.3s ease;
+}
+
+/* BOTONES - EXACTO AL PROTOTIPO (4 5 6) */
+.botones-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 35px 0 30px 0;
+}
+
+.btn-opcion {
+    background: linear-gradient(to bottom, #4CAF50, #388E3C);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 25px 35px;
+    font-size: 36px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    min-width: 120px;
+    border: 4px solid #2E7D32;
+    letter-spacing: 1px;
+}
+
+.btn-opcion:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(to bottom, #66BB6A, #43A047);
+}
+
+.btn-opcion:active {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* MENSAJES */
+.mensaje-container {
+    margin: 25px 0;
+    min-height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mensaje {
+    font-size: 22px;
+    font-weight: 600;
+    padding: 15px 30px;
+    border-radius: 12px;
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.mensaje.mostrar {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mensaje.acierto {
+    background-color: #FFEB3B;
+    color: #FF9800;
+    border: 3px solid #FFC107;
+    box-shadow: 0 4px 10px rgba(255, 193, 7, 0.3);
+}
+
+.mensaje.error {
+    background-color: #E0E0E0;
+    color: #757575;
+    border: 3px solid #9E9E9E;
+    box-shadow: 0 4px 10px rgba(158, 158, 158, 0.3);
+}
+
+/* ANIMACIONES */
+.animaciones-container {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 45px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 10;
+}
+
+.animaciones-container.mostrar {
+    opacity: 1;
+}
+
+.sol-animacion {
+    display: none;
+    animation: brillar 1.5s infinite ease-in-out;
+}
+
+.nube-animacion {
+    display: none;
+    animation: flotar 2s infinite ease-in-out;
+}
+
+@keyframes brillar {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+@keyframes flotar {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    
+    .game-container {
+        padding: 30px 20px;
+        max-width: 95%;
+        border-width: 6px;
+    }
+
+    .titulo-principal {
+        font-size: 30px;
+    }
+
+    .pregunta {
+        font-size: 24px;
+    }
+
+    .fruta-item {
+        font-size: 70px;
+    }
+
+    .btn-opcion {
+        padding: 22px 30px;
+        font-size: 32px;
+        min-width: 110px;
+        border-radius: 12px;
+    }
+
+    .botones-container {
+        gap: 20px;
+    }
+
+    .mensaje {
+        font-size: 20px;
+        padding: 12px 25px;
+    }
+    
+    .animaciones-container {
+        top: 20px;
+        right: 20px;
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-container {
+        padding: 25px 15px;
+        border-width: 5px;
+    }
+
+    .titulo-principal {
+        font-size: 26px;
+    }
+
+    .pregunta {
+        font-size: 22px;
+    }
+
+    .fruta-item {
+        font-size: 60px;
+    }
+
+    .btn-opcion {
+        padding: 18px 25px;
+        font-size: 28px;
+        min-width: 90px;
+        border-radius: 10px;
+    }
+
+    .botones-container {
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .mensaje {
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+    
+    .frutas-container {
+        padding: 20px;
+        gap: 15px;
+    }
+    
+    .animaciones-container {
+        top: 15px;
+        right: 15px;
+        font-size: 35px;
+    }
+}
